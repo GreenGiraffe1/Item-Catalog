@@ -25,7 +25,7 @@
 			<h1>Items</h1>
 			<div class="item-list">
 				{% for item in processors %}
-					<a href="#">
+					<a href="{{url_for('showItem', item_id = item.id)}}">
 						<h5 class="item">{{item.name}}</h3>
 					</a>
 				{% endfor %}

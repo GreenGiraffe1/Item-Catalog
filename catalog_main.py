@@ -29,7 +29,10 @@ def showSummary():
 
 
 
-
+@app.route('/item/<int:item_id>/')
+def showItem(item_id):
+    item = session.query(Item).filter_by(id=item_id).one()
+    return render_template('itemdetails.html', item=item)
 
 
 
