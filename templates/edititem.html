@@ -1,7 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>This is the Edit Item Page</h1>
-<h3>{{item.name}} - is the item to be edited</h3>
+<h3>You are editing item: {{item.name}}</h3>
+
+<form action="{{ url_for('editItem',item_id = item.id)}}" method = "post">
+
+    <label for="name">Name:</label>
+    <br>
+    <input type="text" name="name" value="{{item.name}}">
+    <!-- <input type="text" name="description" value="{{item.description}}"> -->
+    <br><br>
+    <label for="name">Description:</label>
+    <textarea name="description" rows="8" cols="80">{{item.description}}</textarea>
+    <br><br>
+    <label for="name">Category:</label>
+    <div class="radio-list">
+        {% for catagory in catagories %}
+            <input type="radio" name="catagory" value="{{catagory.id}}"> {{catagory.name}} <br>
+        {% endfor %}
+    </div>
+
+
+    <br>
+    <br>
+    <button type="submit" name="confirm">Confirm Edit</button>
+    <br><br>
+    <a href="{{url_for('showItem', item_id = item.id)}}">
+        <button type="button" name="cancel">Cancel</button>
+    </a>
+</form>
 
 {% endblock %}

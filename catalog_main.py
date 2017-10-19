@@ -37,13 +37,27 @@ def showItem(item_id):
     item = session.query(Item).filter_by(id=item_id).one()
     return render_template('itemdetails.html', item=item)
 
-@app.route('/item/<int:item_id>/edit/')
+@app.route('/item/<int:item_id>/edit/', methods=['GET','POST'])
 def editItem(item_id):
-    item = session.query(Item).filter_by(id=item_id).one()
-    return render_template('edititem.html', item=item)
+    editedItem = session.query(Item).filter_by(id=item_id).one()
+    catagories = session.query(Catagory).all()
+    if request.method == 'POST':
+        print('post method activated')
+        if request.form['name']:
+            editedItem.name = request.form['name']
+        if request.form['description']:
+            editedItem.description = request.form['description']
+        if request.form['catagory']:
+            editedItem.catagory_id = request.form['catagory']
+        session.add(editedItem)
+        session.commit()
+        flash('Menu Item Successfully Edited')
+        return redirect(url_for('showItem', item_id=item_id))
+    else:
+        return render_template('edititem.html', item=editedItem, catagories=catagories)
 
 
-@app.route('/item/<int:item_id>/delete/')
+@app.route('/item/<int:item_id>/delete/', methods=['GET','POST'])
 def deleteItem(item_id):
     item = session.query(Item).filter_by(id=item_id).one()
     return render_template('deleteitem.html', item=item)
