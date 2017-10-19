@@ -16,15 +16,18 @@ session = DBSession()
 
 #Show all Home Page
 @app.route('/')
+@app.route('/home/')
 def showHome():
     # restaurants = session.query(Restaurant).order_by(asc(Restaurant.name))
     catagories = session.query(Catagory).order_by(asc(Catagory.name))
     processors = session.query(Item).order_by(asc(Item.name))
     return render_template('home.html', processors=processors, catagories=catagories)
 
-@app.route('/categorysummary/')
-def showSummary():
-    return render_template('categorysummarypublic.html')
+@app.route('/category/<int:catagory_id>/')
+def showSummary(catagory_id):
+    catagory = session.query(Catagory).filter_by(id=catagory_id).one()
+    items = session.query(Item).filter_by(catagory_id=catagory_id).all()
+    return render_template('categorysummary.html', catagory=catagory, items=items)
 
 
 

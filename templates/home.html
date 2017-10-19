@@ -8,9 +8,9 @@
 		<div class="col-md-11 padding-none">
 			<h1>Categories</h1>
 			<div class="item-list">
-				{% for category in catagories %}
-					<a href="#">
-						<h5 class="item">{{category.name}}</h3>
+				{% for catagory in catagories %}
+					<a href="{{url_for('showSummary', catagory_id = catagory.id)}}">
+						<h5 class="item">{{catagory.name}}</h3>
 					</a>
 				{% endfor %}
 			</div>
