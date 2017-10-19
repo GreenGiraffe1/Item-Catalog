@@ -37,9 +37,16 @@ def showItem(item_id):
     item = session.query(Item).filter_by(id=item_id).one()
     return render_template('itemdetails.html', item=item)
 
+@app.route('/item/<int:item_id>/edit/')
+def editItem(item_id):
+    item = session.query(Item).filter_by(id=item_id).one()
+    return render_template('edititem.html', item=item)
 
 
-
+@app.route('/item/<int:item_id>/delete/')
+def deleteItem(item_id):
+    item = session.query(Item).filter_by(id=item_id).one()
+    return render_template('deleteitem.html', item=item)
 
 
 

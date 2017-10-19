@@ -7,5 +7,13 @@
 
 <p>{{item.description}}</p>
 
+<a href="{{url_for('editItem', item_id = item.id)}}">
+    <button type="button" name="edit">Edit</button>
+</a>
+
+<a href="{{url_for('deleteItem', item_id = item.id)}}">
+    <button type="button" name="delete">Delete</button>
+</a>
+
 
 {% endblock %}
