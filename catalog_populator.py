@@ -21,8 +21,8 @@ session = DBSession()
 
 # Create dummy user
 user1 = User(name="Matt-Bott",
-             email="heddy@ahed.com")
-            #  picture='https://pbs.twimg.com/profile_images/2671170543/18debd694829ed78203a5a36dd364160_400x400.png')
+			 email="heddy@ahed.com")
+			#  picture='https://pbs.twimg.com/profile_images/2671170543/18debd694829ed78203a5a36dd364160_400x400.png')
 session.add(user1)
 session.commit()
 
@@ -32,17 +32,57 @@ session.add(catagory1)
 session.commit()
 
 item1 = Item(user_id=1, name="Intel i7-7700K", description="4 cores, 8 threads running at base-clock of 4.2GHz",
-             catagory=catagory1)
+			 catagory=catagory1)
 
 session.add(item1)
 session.commit()
 
 
 item2 = Item(user_id=1, name="Intel i5-7600K", description="4 cores, 4 threads running at base-clock of 3.8GHz",
-             catagory=catagory1)
-
+			 catagory=catagory1)
 session.add(item2)
 session.commit()
+
+
+catagory2 = Catagory(name="Graphics Cards")
+session.add(catagory2)
+session.commit()
+
+
+
+
+
+item3 = Item(user_id=1, name="GTX 1080", description="PUT SOMETHING HERE",
+			 catagory=catagory2)
+session.add(item3)
+session.commit()
+
+item4 = Item(user_id=1, name="RX 580 8GB", description="PUT SOMETHING HERE",
+			 catagory=catagory2)
+session.add(item4)
+session.commit()
+
+catagory3 = Catagory(name="Computer Monitors")
+session.add(catagory3)
+session.commit()
+
+
+item5 = Item(user_id=1, name="ASUS 23.8 inch ", description="PUT SOMETHING HERE",
+			 catagory=catagory3)
+session.add(item5)
+session.commit()
+
+
+
+item6 = Item(user_id=1, name="HP OMEN 25", description="PUT SOMETHING HERE",
+			 catagory=catagory3)
+session.add(item6)
+session.commit()
+
+
+
+
+
 
 
 
