@@ -42,7 +42,6 @@ def editItem(item_id):
     editedItem = session.query(Item).filter_by(id=item_id).one()
     catagories = session.query(Catagory).all()
     if request.method == 'POST':
-        print('post method activated')
         if request.form['name']:
             editedItem.name = request.form['name']
         if request.form['description']:
@@ -60,13 +59,18 @@ def editItem(item_id):
 @app.route('/item/<int:item_id>/delete/', methods=['GET','POST'])
 def deleteItem(item_id):
     item = session.query(Item).filter_by(id=item_id).one()
-    return render_template('deleteitem.html', item=item)
+    if request.method == 'POST':
+        session.delete(item)
+        session.commit()
+        flash('Item Successfully Deleted')
+        return redirect(url_for('showHome'))
+    else:
+        return render_template('deleteitem.html', item=item)
 
 @app.route('/item/new/', methods=['GET','POST'])
 def newItem():
     catagories = session.query(Catagory).all()
     if request.method == 'POST':
-        print('post method activated')
         newItem = Item(name=request.form['name'], description=request.form['description'], catagory_id=request.form['catagory'], user_id=1)
         session.add(newItem)
         session.commit()
