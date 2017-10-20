@@ -1,7 +1,78 @@
-{% extends "base.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="//apis.google.com/js/platform.js?onload=start"> </script>
+    </head>
+    <body>
+        <a href="{{url_for('showHome')}}"><h1>Catalog Web App</h1></a>
+        <hr>
+        <h4>This is the Login Page</h4>
+        <br>
 
-<h1>This is the Login Page</h1>
+        <p>These aren't going to work for a while...</p>
+        <label>Username:</label>
+        <input type="text" name="username" value="">
+        <br>
+        <label>Password:</label>
+        <input type="password" name="password" value="">
+        <hr>
 
 
-{% endblock %}
+
+        <!-- GOOGLE PLUS SIGN IN BUTTON-->
+
+
+        <div id="signinButton">
+            <span class="g-signin"
+                data-scope="openid email"
+                data-clientid="920717609826-575k0m5b81qe6hmt78uqpa2pqt5o4gt5.apps.googleusercontent.com"
+                data-redirecturi="postmessage"
+                data-accesstype="offline"
+                data-cookiepolicy="single_host_origin"
+                data-callback="signInCallback"
+                data-approvalprompt="force">
+            </span>
+        </div>
+        <div id="result"></div>
+
+<script>
+function signInCallback(authResult) {
+    if (authResult['code']) {
+    // Hide the sign-in button now that the user is authorized
+    $('#signinButton').attr('style', 'display: none');
+    // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main restaurants page
+    $.ajax({
+        type: 'POST',
+        url: '/gconnect?state={{STATE}}',
+        processData: false,
+        data: authResult['code'],
+        contentType: 'application/octet-stream; charset=utf-8',
+        success: function(result) {
+            // Handle or verify the server response if necessary.
+            if (result) {
+                $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+                setTimeout(function() {
+                    window.location.href = "/restaurant";
+                }, 4000);
+
+            } else if (authResult['error']) {
+                console.log('There was an error: ' + authResult['error']);
+            } else {
+                $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+            }
+        }
+
+    }); }
+}
+</script>
+
+<!--END GOOGLE PLUS SIGN IN BUTTON -->
+
+
+
+    </body>
+</html>
