@@ -50,7 +50,7 @@ def editItem(item_id):
             editedItem.catagory_id = request.form['catagory']
         session.add(editedItem)
         session.commit()
-        flash('Menu Item Successfully Edited')
+        flash('Item Successfully Edited')
         return redirect(url_for('showItem', item_id=item_id))
     else:
         return render_template('edititem.html', item=editedItem, catagories=catagories)
@@ -74,7 +74,7 @@ def newItem():
         newItem = Item(name=request.form['name'], description=request.form['description'], catagory_id=request.form['catagory'], user_id=1)
         session.add(newItem)
         session.commit()
-        flash('New Menu Item Successfully Created')
+        flash('New Item Successfully Created')
         return redirect(url_for('showHome'))
     else:
         return render_template('newitem.html', catagories=catagories)
