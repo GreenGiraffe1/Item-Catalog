@@ -42,6 +42,9 @@ def editItem(item_id):
     editedItem = session.query(Item).filter_by(id=item_id).one()
     catagories = session.query(Catagory).all()
     if request.method == 'POST':
+        if not (request.form['name'] and request.form['description'] and request.form['catagory']):
+            flash('All fields must be specified to edit an new item.')
+            return redirect(url_for('editItem', item_id=item_id))
         if request.form['name']:
             editedItem.name = request.form['name']
         if request.form['description']:
@@ -71,6 +74,9 @@ def deleteItem(item_id):
 def newItem():
     catagories = session.query(Catagory).all()
     if request.method == 'POST':
+        if not (request.form['name'] and request.form['description'] and request.form['catagory']):
+            flash('All fields must be specified to create a new item.')
+            return redirect(url_for('newItem'))
         newItem = Item(name=request.form['name'], description=request.form['description'], catagory_id=request.form['catagory'], user_id=1)
         session.add(newItem)
         session.commit()
