@@ -14,7 +14,6 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-#Show all Home Page
 @app.route('/')
 @app.route('/home/')
 def showHome():
@@ -23,6 +22,7 @@ def showHome():
     processors = session.query(Item).order_by(asc(Item.name))
     return render_template('home.html', processors=processors, catagories=catagories)
 
+
 @app.route('/category/<int:catagory_id>/')
 def showSummary(catagory_id):
     catagory = session.query(Catagory).filter_by(id=catagory_id).one()
@@ -30,12 +30,11 @@ def showSummary(catagory_id):
     return render_template('categorysummary.html', catagory=catagory, items=items)
 
 
-
-
 @app.route('/item/<int:item_id>/')
 def showItem(item_id):
     item = session.query(Item).filter_by(id=item_id).one()
     return render_template('itemdetails.html', item=item)
+
 
 @app.route('/item/<int:item_id>/edit/', methods=['GET','POST'])
 def editItem(item_id):
@@ -69,6 +68,7 @@ def deleteItem(item_id):
         return redirect(url_for('showHome'))
     else:
         return render_template('deleteitem.html', item=item)
+
 
 @app.route('/item/new/', methods=['GET','POST'])
 def newItem():
