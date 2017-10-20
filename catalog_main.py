@@ -62,7 +62,18 @@ def deleteItem(item_id):
     item = session.query(Item).filter_by(id=item_id).one()
     return render_template('deleteitem.html', item=item)
 
-
+@app.route('/item/new/', methods=['GET','POST'])
+def newItem():
+    catagories = session.query(Catagory).all()
+    if request.method == 'POST':
+        print('post method activated')
+        newItem = Item(name=request.form['name'], description=request.form['description'], catagory_id=request.form['catagory'], user_id=1)
+        session.add(newItem)
+        session.commit()
+        flash('New Menu Item Successfully Created')
+        return redirect(url_for('showHome'))
+    else:
+        return render_template('newitem.html', catagories=catagories)
 
 
 
