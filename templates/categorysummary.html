@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+    <a href="{{url_for('newItem')}}">
+        <button type="button" name="new-item">Create New Item</button>
+    </a>
 
     <h1>{{catagory.name}}</h1>
 

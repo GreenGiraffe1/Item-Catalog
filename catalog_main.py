@@ -28,13 +28,19 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
+
 @app.route('/')
 @app.route('/home/')
 def showHome():
     # restaurants = session.query(Restaurant).order_by(asc(Restaurant.name))
     catagories = session.query(Catagory).order_by(asc(Catagory.name))
     processors = session.query(Item).order_by(asc(Item.name))
-    return render_template('home.html', processors=processors, catagories=catagories)
+    if 'username' not in login_session:
+        return render_template('homepublic.html', processors=processors, catagories=catagories)
+    else:
+        catagories = session.query(Catagory).order_by(asc(Catagory.name))
+        processors = session.query(Item).order_by(asc(Item.name))
+        return render_template('home.html', processors=processors, catagories=catagories)
 
 
 @app.route('/category/<int:catagory_id>/')
@@ -47,13 +53,20 @@ def showSummary(catagory_id):
 @app.route('/item/<int:item_id>/')
 def showItem(item_id):
     item = session.query(Item).filter_by(id=item_id).one()
-    return render_template('itemdetails.html', item=item)
+    if login_session['user_id'] != item.user_id:
+        return render_template('itemdetailspublic.html', item=item)
+    else:
+        return render_template('itemdetails.html', item=item)
 
 
 @app.route('/item/<int:item_id>/edit/', methods=['GET','POST'])
 def editItem(item_id):
+    if 'username' not in login_session:
+        return redirect('/login')
     editedItem = session.query(Item).filter_by(id=item_id).one()
     catagories = session.query(Catagory).all()
+    if login_session['user_id'] != editedItem.user_id:
+        return "<script>function myFunction() {alert('You are not authorized to edit this item. Please create your own items in order to edit them.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
         if not (request.form['name'] and request.form['description'] and request.form['catagory']):
             flash('All fields must be specified to edit an new item.')
@@ -74,7 +87,11 @@ def editItem(item_id):
 
 @app.route('/item/<int:item_id>/delete/', methods=['GET','POST'])
 def deleteItem(item_id):
+    if 'username' not in login_session:
+        return redirect('/login')
     item = session.query(Item).filter_by(id=item_id).one()
+    if login_session['user_id'] != item.user_id:
+        return "<script>function myFunction() {alert('You are not authorized to delete this item. Please create your own items in order to delete them.');}</script><body onload='myFunction()''>"
     if request.method == 'POST':
         session.delete(item)
         session.commit()
@@ -86,12 +103,14 @@ def deleteItem(item_id):
 
 @app.route('/item/new/', methods=['GET','POST'])
 def newItem():
+    if 'username' not in login_session:
+        return redirect('/login')
     catagories = session.query(Catagory).all()
     if request.method == 'POST':
         if not (request.form['name'] and request.form['description'] and request.form['catagory']):
             flash('All fields must be specified to create a new item.')
             return redirect(url_for('newItem'))
-        newItem = Item(name=request.form['name'], description=request.form['description'], catagory_id=request.form['catagory'], user_id=1)
+        newItem = Item(name=request.form['name'], description=request.form['description'], catagory_id=request.form['catagory'], user_id=login_session['user_id'])
         session.add(newItem)
         session.commit()
         flash('New Item Successfully Created')
@@ -110,6 +129,29 @@ def showLogin():
     login_session['state'] = state
     # return "The current session state is %s" % login_session['state']
     return render_template('login.html', STATE=state)
+
+
+# User Helper Functions
+def createUser(login_session):
+    newUser = User(name=login_session['username'], email=login_session[
+                   'email'], picture=login_session['picture'])
+    session.add(newUser)
+    session.commit()
+    user = session.query(User).filter_by(email=login_session['email']).one()
+    return user.id
+
+
+def getUserInfo(user_id):
+    user = session.query(User).filter_by(id=user_id).one()
+    return user
+
+
+def getUserID(email):
+    try:
+        user = session.query(User).filter_by(email=email).one()
+        return user.id
+    except:
+        return None
 
 
 @app.route('/gconnect', methods=['POST'])
@@ -183,6 +225,12 @@ def gconnect():
     login_session['username'] = data['name']
     login_session['picture'] = data['picture']
     login_session['email'] = data['email']
+
+    # Set user_id , and create new user in database, if they are new.
+    user_id = getUserID(login_session['email'])
+    if not user_id:
+        user_id = createUser(login_session)
+    login_session['user_id'] = user_id
 
     output = ''
     output += '<h1>Welcome, '

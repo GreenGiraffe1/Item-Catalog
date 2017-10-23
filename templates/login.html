@@ -10,6 +10,19 @@
     <body>
         <a href="{{url_for('showHome')}}"><h1>Catalog Web App</h1></a>
         <hr>
+        <div class = 'flash'>
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+
+			<ul>
+			{% for message in messages %}
+				<li> <strong> {{ message }} </strong> </li>
+			{% endfor %}
+			</ul>
+			{% endif %}
+			{% endwith %}
+
+		</div>
         <h4>This is the Login Page</h4>
         <br>
 

@@ -10,9 +10,6 @@
         <a href="{{url_for('gdisconnect')}}"><button type="button" name="gdisconnect">G-Disconnect</button></a>
         <a href="{{url_for('showHome')}}"><h1>Catalog Web App</h1></a>
 		<hr>
-		<a href="{{url_for('newItem')}}">
-			<button type="button" name="new-item">Create New Item</button>
-		</a>
 		<div class = 'flash'>
 			{% with messages = get_flashed_messages() %}
 			{% if messages %}
