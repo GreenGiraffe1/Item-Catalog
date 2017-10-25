@@ -148,6 +148,7 @@ def itemJSON(item_id):
 	return jsonify(Item_Details=itemDetails.serialize)
 
 #Items by category - List All
+@app.route('/JSON')
 @app.route('/catalog/JSON')
 def allItemsJSON():
 	# catagories = session.query(Catagory).all()
