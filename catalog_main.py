@@ -30,9 +30,9 @@ session = DBSession()
 
 
 @app.route('/')
-@app.route('/home/')
+# @app.route('/home/')
 @app.route('/catalog/')
-def showHome():
+def showCatalog():
 	catagories = session.query(Catagory).order_by(asc(Catagory.name))
 	processors = session.query(Item).order_by(asc(Item.name))
 	if 'username' not in login_session:
@@ -98,7 +98,7 @@ def deleteItem(item_id):
 		session.delete(item)
 		session.commit()
 		flash('Item Successfully Deleted')
-		return redirect(url_for('showHome'))
+		return redirect(url_for('showCatalog'))
 	else:
 		return render_template('deleteitem.html', item=item)
 
@@ -116,7 +116,7 @@ def newItem():
 		session.add(newItem)
 		session.commit()
 		flash('New Item Successfully Created')
-		return redirect(url_for('showHome'))
+		return redirect(url_for('showCatalog'))
 	else:
 		return render_template('newitem.html', catagories=catagories)
 
@@ -401,10 +401,10 @@ def disconnect():
 			print login_session
 		else:
 			print 'no login_session'
-		return redirect(url_for('showHome'))
+		return redirect(url_for('showCatalog'))
 	else:
 		flash("You were not logged in")
-		return redirect(url_for('showHome'))
+		return redirect(url_for('showCatalog'))
 
 
 
