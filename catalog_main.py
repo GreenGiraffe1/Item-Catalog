@@ -47,7 +47,11 @@ def showCatalog():
 def showSummary(catagory_id):
 	catagory = session.query(Catagory).filter_by(id=catagory_id).one()
 	items = session.query(Item).filter_by(catagory_id=catagory_id).all()
-	return render_template('categorysummary.html', catagory=catagory, items=items)
+	if 'username' not in login_session:
+		return render_template('categorysummarypublic.html', catagory=catagory, items=items)
+	else:
+		return render_template('categorysummary.html', catagory=catagory, items=items)
+
 
 
 @app.route('/item/<int:item_id>/')
