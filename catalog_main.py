@@ -52,6 +52,8 @@ def showSummary(catagory_id):
 @app.route('/item/<int:item_id>/')
 def showItem(item_id):
 	item = session.query(Item).filter_by(id=item_id).one()
+	if 'username' not in login_session:
+		return render_template('itemdetailspublic.html', item=item)
 	if login_session['user_id'] != item.user_id:
 		return render_template('itemdetailspublic.html', item=item)
 	else:
