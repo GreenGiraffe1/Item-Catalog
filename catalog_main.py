@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect,jsonify, url_for, flash
+from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
 app = Flask(__name__)
 
 from sqlalchemy import create_engine, asc
@@ -31,6 +31,7 @@ session = DBSession()
 
 @app.route('/')
 @app.route('/home/')
+@app.route('/catalog/')
 def showHome():
 	catagories = session.query(Catagory).order_by(asc(Catagory.name))
 	processors = session.query(Item).order_by(asc(Item.name))
@@ -130,6 +131,26 @@ def showLogin():
 	login_session['state'] = state
 	# return "The current session state is %s" % login_session['state']
 	return render_template('login.html', STATE=state)
+
+
+
+
+# JSON API's
+
+# Item Details
+@app.route('/item/<int:item_id>/JSON')
+def itemJSON(item_id):
+	itemDetails = session.query(Item).filter_by(id=item_id).one()
+	return jsonify(Item_Details=itemDetails.serialize)
+
+#Items by category - List All
+@app.route('/catalog/JSON')
+def allItemsJSON():
+	# catagories = session.query(Catagory).all()
+	# catitems = session.query(Item.name, Catagory.name, Item.description).select_from(Item, N)
+	items = session.query(Item).order_by(asc(Item.name))
+	return jsonify(Item_List=[i.serialize for i in items])
+	# return jsonify(Item_List=[c.serialize for c in catitems])
 
 
 # User Helper Functions
