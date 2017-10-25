@@ -188,6 +188,8 @@ def fbconnect():
 	# print "url sent for API access:%s"% url
 	# print "API JSON result: %s" % result
 	data = json.loads(result)
+	print 'The data object will be printed below:'
+	print (data)
 	login_session['provider'] = 'facebook'
 	login_session['username'] = data["name"]
 	login_session['email'] = data["email"]
@@ -210,10 +212,10 @@ def fbconnect():
 		user_id = createUser(login_session)
 	login_session['user_id'] = user_id
 
-	print('Facebook user_id = ' + str(login_session['user_id']))
-	print('Facebook username = ' + str(login_session['username']))
-	print('Facebook email = ' + str(login_session['email']))
-	print('Provider is ' + login_session['provider'] + '!!!')
+	# print('Facebook user_id = ' + str(login_session['user_id']))
+	# print('Facebook username = ' + str(login_session['username']))
+	# print('Facebook email = ' + str(login_session['email']))
+	# print('Provider is ' + login_session['provider'] + '!!!')
 
 
 	output = ''
