@@ -5,28 +5,28 @@
 
 <form action="{{ url_for('newItem')}}" method = "post">
 
-	<label for="name">Name:</label>
-	<br>
-	<input type="text" name="name" value="">
-	<br><br>
-	<label for="name">Description:</label>
-	<textarea name="description" rows="8" cols="80"></textarea>
-	<br><br>
-	<label for="name">Category:</label>
-	<div class="radio-list">
-		{% for catagory in catagories %}
-			<input type="radio" name="catagory" value="{{catagory.id}}" checked="checked"> {{catagory.name}} <br>
-		{% endfor %}
-	</div>
+    <label for="name">Name:</label>
+    <br>
+    <input type="text" name="name" value="">
+    <br><br>
+    <label for="name">Description:</label>
+    <textarea name="description" rows="8" cols="80"></textarea>
+    <br><br>
+    <label for="name">Category:</label>
+    <div class="radio-list">
+        {% for catagory in catagories %}
+            <input type="radio" name="catagory" value="{{catagory.id}}" checked="checked"> {{catagory.name}} <br>
+        {% endfor %}
+    </div>
 
 
-	<br>
-	<br>
-	<button type="submit" name="confirm">Confirm Create</button>
-	<br><br>
-	<a href="{{url_for('showCatalog')}}">
-		<button type="button" name="cancel">Cancel</button>
-	</a>
+    <br>
+    <br>
+    <button type="submit" name="confirm">Confirm Create</button>
+    <br><br>
+    <a href="{{url_for('showCatalog')}}">
+        <button type="button" name="cancel">Cancel</button>
+    </a>
 </form>
 
 {% endblock %}

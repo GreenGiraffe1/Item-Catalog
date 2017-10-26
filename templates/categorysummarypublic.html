@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-	<h1>{{catagory.name}}</h1>
+    <h1>{{catagory.name}}</h1>
 
-	<div class="item-list">
-		{% for item in items %}
-			<a href="{{url_for('showItem', item_id = item.id)}}">
-				<h5 class="item">{{item.name}}</h3>
-			</a>
-		{% endfor %}
-	</div>
+    <div class="item-list">
+        {% for item in items %}
+            <a href="{{url_for('showItem', item_id = item.id)}}">
+                <h5 class="item">{{item.name}}</h3>
+            </a>
+        {% endfor %}
+    </div>
 
 {% endblock %}
