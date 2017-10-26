@@ -1,20 +1,22 @@
-from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
-app = Flask(__name__)
+import httplib2
+import json
+import requests
+import random
+import string
 
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, User, Catagory, Item
-
-# Imports to support OAuth implementation
+from flask import Flask, render_template, request, redirect, jsonify, url_for
+from flask import make_response, flash
 from flask import session as login_session
-import random
-import string
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
-import httplib2
-import json
-from flask import make_response
-import requests
+
+from database_setup import Base, User, Catagory, Item
+
+
+
+app = Flask(__name__)
 
 
 CLIENT_ID = (json.loads(open('client_secrets.json', 'r').read())
