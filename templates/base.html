@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'> -->
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
-	</head>
-	<body>
-		<a href="{{url_for('showLogin')}}"><button type="button" name="login">Login</button></a>
-		<a href="{{url_for('gdisconnect')}}"><button type="button" name="gdisconnect">G-Disconnect</button></a>
-		<a href="{{url_for('fbdisconnect')}}"><button type="button" name="fbdisconnect">FB-Disconnect</button></a>
-		<a href="{{url_for('disconnect')}}"><button type="button" name="logout">Log Out</button></a>
+    <head>
+        <!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'> -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <a href="{{url_for('showLogin')}}"><button type="button" name="login">Login</button></a>
+        <a href="{{url_for('gdisconnect')}}"><button type="button" name="gdisconnect">G-Disconnect</button></a>
+        <a href="{{url_for('fbdisconnect')}}"><button type="button" name="fbdisconnect">FB-Disconnect</button></a>
+        <a href="{{url_for('disconnect')}}"><button type="button" name="logout">Log Out</button></a>
 
-		<a href="{{url_for('showCatalog')}}"><h1>Catalog Web App</h1></a>
-		<hr>
-		<div class = 'flash'>
-			{% with messages = get_flashed_messages() %}
-			{% if messages %}
+        <a href="{{url_for('showCatalog')}}"><h1>Catalog Web App</h1></a>
+        <hr>
+        <div class = 'flash'>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
 
-			<ul>
-			{% for message in messages %}
-				<li> <strong> {{ message }} </strong> </li>
-			{% endfor %}
-			</ul>
-			{% endif %}
-			{% endwith %}
+            <ul>
+            {% for message in messages %}
+                <li> <strong> {{ message }} </strong> </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
 
-		</div>
+        </div>
 
-		<div class="container">
-			{% block content %}
-			{% endblock %}
-		</div>
-	</body>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
 </html>
