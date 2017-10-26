@@ -17,7 +17,8 @@ from flask import make_response
 import requests
 
 
-CLIENT_ID = json.loads(open('client_secrets.json', 'r').read())['web']['client_id']
+CLIENT_ID = (json.loads(open('client_secrets.json', 'r').read())
+														 ['web']['client_id'])
 APPLICATION_NAME = "Catalog Web App"
 
 #Connect to Database and create database session
@@ -82,7 +83,8 @@ def editItem(item_id):
 				+ "own items in order to edit them.');}</script><body "
 				+ "onload='myFunction()''>")
 	if request.method == 'POST':
-		if not (request.form['name'] and request.form['description'] and request.form['catagory']):
+		if not (request.form['name'] and request.form['description']
+				and request.form['catagory']):
 			flash('All fields must be specified to edit an new item.')
 			return redirect(url_for('editItem', item_id=item_id))
 		if request.form['name']:
@@ -125,7 +127,8 @@ def newItem():
 		return redirect('/login')
 	catagories = session.query(Catagory).all()
 	if request.method == 'POST':
-		if not (request.form['name'] and request.form['description'] and request.form['catagory']):
+		if not (request.form['name'] and request.form['description']
+				and request.form['catagory']):
 			flash('All fields must be specified to create a new item.')
 			return redirect(url_for('newItem'))
 		newItem = Item(name=request.form['name'],
