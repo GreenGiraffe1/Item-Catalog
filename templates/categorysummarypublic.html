@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
     <h1>{{catagory.name}}</h1>
-
     <div class="item-list">
         {% for item in items %}
             <a href="{{url_for('showItem', item_id = item.id)}}">
@@ -10,5 +8,4 @@
             </a>
         {% endfor %}
     </div>
-
 {% endblock %}
