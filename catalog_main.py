@@ -15,9 +15,7 @@ from oauth2client.client import FlowExchangeError
 from database_setup import Base, User, Catagory, Item
 
 
-
 app = Flask(__name__)
-
 
 CLIENT_ID = (json.loads(open('client_secrets.json', 'r').read())
                                                          ['web']['client_id'])
@@ -26,10 +24,8 @@ APPLICATION_NAME = "Catalog Web App"
 #Connect to Database and create database session
 engine = create_engine('sqlite:///itemcatalog.db')
 Base.metadata.bind = engine
-
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
-
 
 
 @app.route('/')
@@ -59,7 +55,6 @@ def showSummary(catagory_id):
     else:
         return render_template('categorysummary.html', catagory=catagory,
                                 items=items)
-
 
 
 @app.route('/item/<int:item_id>/')
@@ -145,8 +140,6 @@ def newItem():
         return render_template('newitem.html', catagories=catagories)
 
 
-
-
 # Create anti-forgery state token
 @app.route('/login')
 def showLogin():
@@ -157,25 +150,20 @@ def showLogin():
     return render_template('login.html', STATE=state)
 
 
-
-
 # JSON API's
-
 # Item Details
 @app.route('/item/<int:item_id>/JSON')
 def itemJSON(item_id):
     itemDetails = session.query(Item).filter_by(id=item_id).one()
     return jsonify(Item_Details=itemDetails.serialize)
 
+
 #Items by category - List All
 @app.route('/JSON')
 @app.route('/catalog/JSON')
 def allItemsJSON():
-    # catagories = session.query(Catagory).all()
-    # catitems = session.query(Item.name, Catagory.name, Item.description).select_from(Item, N)
     items = session.query(Item).order_by(asc(Item.name))
     return jsonify(Item_List=[i.serialize for i in items])
-    # return jsonify(Item_List=[c.serialize for c in catitems])
 
 
 # User Helper Functions
@@ -188,11 +176,9 @@ def createUser(login_session):
     user = session.query(User).filter_by(email=login_session['email']).one()
     return user.id
 
-
 def getUserInfo(user_id):
     user = session.query(User).filter_by(id=user_id).one()
     return user
-
 
 def getUserID(email):
     try:
@@ -200,7 +186,6 @@ def getUserID(email):
         return user.id
     except:
         return None
-
 
 
 @app.route('/fbconnect', methods=['POST'])
@@ -211,8 +196,6 @@ def fbconnect():
         return response
     access_token = request.data
     print "access token received %s " % access_token
-
-
     app_id = (json.loads(open('fb_client_secrets.json', 'r')
               .read())['web']['app_id'])
     app_secret = (json.loads(open('fb_client_secrets.json', 'r')
@@ -222,8 +205,6 @@ def fbconnect():
           + 'exchange_token=%s') % (app_id, app_secret, access_token)
     h = httplib2.Http()
     result = h.request(url, 'GET')[1]
-
-
     # Use token to get user info from API
     userinfo_url = "https://graph.facebook.com/v2.10/me"
     '''
@@ -266,7 +247,6 @@ def fbconnect():
         user_id = createUser(login_session)
     login_session['user_id'] = user_id
 
-
     output = ''
     output += '<h1>Welcome, '
     output += login_session['username']
@@ -281,7 +261,6 @@ def fbconnect():
     return output
 
 
-
 @app.route('/fbdisconnect')
 def fbdisconnect():
     facebook_id = login_session['facebook_id']
@@ -294,10 +273,6 @@ def fbdisconnect():
     return "you have been logged out"
 
 
-
-
-
-
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
     # Validate state token
@@ -307,7 +282,6 @@ def gconnect():
         return response
     # Obtain authorization code
     code = request.data
-
     try:
         # Upgrade the authorization code into a credentials object
         oauth_flow = flow_from_clientsecrets('client_secrets.json', scope='')
@@ -416,7 +390,6 @@ def gdisconnect():
         return response
 
 
-
 # Disconnect based on provider
 @app.route('/disconnect')
 def disconnect():
@@ -446,34 +419,7 @@ def disconnect():
         return redirect(url_for('showCatalog'))
 
 
-
-
-
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
     app.debug = True
     app.run(host='0.0.0.0', port=8000)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# END
