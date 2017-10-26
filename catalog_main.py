@@ -76,7 +76,10 @@ def editItem(item_id):
 	editedItem = session.query(Item).filter_by(id=item_id).one()
 	catagories = session.query(Catagory).all()
 	if login_session['user_id'] != editedItem.user_id:
-		return "<script>function myFunction() {alert('You are not authorized to edit this item. Please create your own items in order to edit them.');}</script><body onload='myFunction()''>"
+		return ("<script>function myFunction() {alert('You are not "
+				+ "authorized to edit this item. Please create your "
+				+ "own items in order to edit them.');}</script><body "
+				+ "onload='myFunction()''>")
 	if request.method == 'POST':
 		if not (request.form['name'] and request.form['description'] and request.form['catagory']):
 			flash('All fields must be specified to edit an new item.')
@@ -102,7 +105,10 @@ def deleteItem(item_id):
 		return redirect('/login')
 	item = session.query(Item).filter_by(id=item_id).one()
 	if login_session['user_id'] != item.user_id:
-		return "<script>function myFunction() {alert('You are not authorized to delete this item. Please create your own items in order to delete them.');}</script><body onload='myFunction()''>"
+		return ("<script>function myFunction() {alert('You are not "
+				+ "authorized to delete this item. Please create your "
+				+ "own items in order to delete them.');}</script>"
+				+ "<body onload='myFunction()''>")
 	if request.method == 'POST':
 		session.delete(item)
 		session.commit()
@@ -211,11 +217,12 @@ def fbconnect():
 	# Use token to get user info from API
 	userinfo_url = "https://graph.facebook.com/v2.10/me"
 	'''
-		Due to the formatting for the result from the server token exchange we have to
-		split the token first on commas and select the first index which gives us the key : value
-		for the server access token then we split it on colons to pull out the actual token value
-		and replace the remaining quotes with nothing so that it can be used directly in the graph
-		api calls
+		Due to the formatting for the result from the server token
+		exchange we have to split the token first on commas and select
+		the first index which gives us the key : value for the server
+		access token then we split it on colons to pull out the actual
+		token value and replace the remaining quotes with nothing so
+		that it can be used directly in the graph api calls
 	'''
 	token = result.split(',')[0].split(':')[1].replace('"', '')
 
@@ -255,7 +262,8 @@ def fbconnect():
 	output += '!</h1>'
 	output += '<img src="'
 	output += login_session['picture']
-	output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
+	output += ' " style = "width: 300px; height: 300px;border-radius: 150px;'
+	output += '-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
 
 	flash("Now logged in as %s" % login_session['username'])
 	return output
@@ -362,7 +370,8 @@ def gconnect():
 	output += '!</h1>'
 	output += '<img src="'
 	output += login_session['picture']
-	output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
+	output += ' " style = "width: 300px; height: 300px;border-radius: 150px;'
+	output += '-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
 	flash("you are now logged in as %s" % login_session['username'])
 	print "done!"
 	return output
