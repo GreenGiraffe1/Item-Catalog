@@ -8,7 +8,7 @@ description can be viewed by clicking on an item. **Catalog Web App**
 supports user registration, and logging via Facebook Login or Google Login
 OAuth2.0 verification. User's who are signed-in are able to create new items,
 and edit or delete items they've created. Permissions are in place to prevent
-users from modifying other user's content, and to prevent non-registered users
+users from modifying other users' content, and to prevent non-registered users
 from doing the same, or from creating new content themselves.
 
 ## Setup:
@@ -22,7 +22,16 @@ and that you have an active Internet connection.
 ## Attribution:
 This project was created while I was taking the Udacity Full-Stack Nanodegree,
 and significant chunks of the structure / ideas behind the structure were
-provided by the course author.
+provided by the course author. [INSERT STUFF]
+
+This project uses the [OAuth2.0](https://oauth.net/2/) framework to support 3rd party login.
+
+[SQLAlchemy](http://www.sqlalchemy.org/) is employed as an Object Relational
+Mapper (ORM) to allow me to make full use of a SQL backed database inside this
+Python application.
+
+[Flask](http://flask.pocoo.org/) framework for Python is used to simplify the
+design functionality of the Web app.
 
 ## License:
 **Catalog Web App** is a public domain work, with license
