@@ -36,11 +36,13 @@ def showCatalog():
 	catagories = session.query(Catagory).order_by(asc(Catagory.name))
 	processors = session.query(Item).order_by(asc(Item.name))
 	if 'username' not in login_session:
-		return render_template('homepublic.html', processors=processors, catagories=catagories)
+		return render_template('homepublic.html', processors=processors,
+								catagories=catagories)
 	else:
 		catagories = session.query(Catagory).order_by(asc(Catagory.name))
 		processors = session.query(Item).order_by(asc(Item.name))
-		return render_template('home.html', processors=processors, catagories=catagories)
+		return render_template('home.html', processors=processors,
+								catagories=catagories)
 
 
 @app.route('/category/<int:catagory_id>/')
@@ -48,9 +50,11 @@ def showSummary(catagory_id):
 	catagory = session.query(Catagory).filter_by(id=catagory_id).one()
 	items = session.query(Item).filter_by(catagory_id=catagory_id).all()
 	if 'username' not in login_session:
-		return render_template('categorysummarypublic.html', catagory=catagory, items=items)
+		return render_template('categorysummarypublic.html', catagory=catagory,
+								items=items)
 	else:
-		return render_template('categorysummary.html', catagory=catagory, items=items)
+		return render_template('categorysummary.html', catagory=catagory,
+								items=items)
 
 
 
@@ -88,7 +92,8 @@ def editItem(item_id):
 		flash('Item Successfully Edited')
 		return redirect(url_for('showItem', item_id=item_id))
 	else:
-		return render_template('edititem.html', item=editedItem, catagories=catagories)
+		return render_template('edititem.html', item=editedItem,
+								catagories=catagories)
 
 
 @app.route('/item/<int:item_id>/delete/', methods=['GET','POST'])
@@ -116,7 +121,10 @@ def newItem():
 		if not (request.form['name'] and request.form['description'] and request.form['catagory']):
 			flash('All fields must be specified to create a new item.')
 			return redirect(url_for('newItem'))
-		newItem = Item(name=request.form['name'], description=request.form['description'], catagory_id=request.form['catagory'], user_id=login_session['user_id'])
+		newItem = Item(name=request.form['name'],
+					   description=request.form['description'],
+					   catagory_id=request.form['catagory'],
+					   user_id=login_session['user_id'])
 		session.add(newItem)
 		session.commit()
 		flash('New Item Successfully Created')
@@ -160,8 +168,9 @@ def allItemsJSON():
 
 # User Helper Functions
 def createUser(login_session):
-	newUser = User(name=login_session['username'], email=login_session[
-				   'email'], picture=login_session['picture'])
+	newUser = User(name=login_session['username'],
+				   email=login_session['email'],
+				   picture=login_session['picture'])
 	session.add(newUser)
 	session.commit()
 	user = session.query(User).filter_by(email=login_session['email']).one()
