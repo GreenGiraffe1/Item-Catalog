@@ -27,7 +27,6 @@ session = DBSession()
 
 
 @app.route('/')
-# @app.route('/home/')
 @app.route('/catalog/')
 def showCatalog():
     catagories = session.query(Catagory).order_by(asc(Catagory.name))
@@ -395,7 +394,6 @@ def disconnect():
         if login_session['provider'] == 'google':
             gdisconnect()
             del login_session['gplus_id']
-            # del login_session['credentials']
         if login_session['provider'] == 'facebook':
             fbdisconnect()
             del login_session['access_token']
