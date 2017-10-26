@@ -16,11 +16,9 @@ from database_setup import Base, User, Catagory, Item
 
 
 app = Flask(__name__)
-
 CLIENT_ID = (json.loads(open('client_secrets.json', 'r').read())
                                                          ['web']['client_id'])
 APPLICATION_NAME = "Catalog Web App"
-
 #Connect to Database and create database session
 engine = create_engine('sqlite:///itemcatalog.db')
 Base.metadata.bind = engine
