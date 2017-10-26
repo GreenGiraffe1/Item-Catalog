@@ -5,8 +5,13 @@
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-        <a href="{{url_for('showLogin')}}"><button type="button" name="login">Login</button></a>
-        <a href="{{url_for('disconnect')}}"><button type="button" name="logout">Log Out</button></a>
+        <div class="buttons">
+            {% if 'username' not in session %}
+                <a href="{{url_for('showLogin')}}"><button type="button" name="login">Login</button></a>
+            {% else %}
+                <a href="{{url_for('disconnect')}}"><button type="button" name="logout">Log Out</button></a>
+            {% endif %}
+        </div>
         <a href="{{url_for('showCatalog')}}"><h1>Catalog Web App</h1></a>
         <hr>
         <div class = 'flash'>
