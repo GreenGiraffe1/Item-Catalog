@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+
     <h1>{{catagory.name}}</h1>
     <div class="item-list">
         {% for item in items %}
@@ -8,4 +9,5 @@
             </a>
         {% endfor %}
     </div>
+    
 {% endblock %}

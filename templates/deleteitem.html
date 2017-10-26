@@ -2,7 +2,6 @@
 {% block content %}
 
 <h1>This is the Delete Item Page</h1>
-
 <h3>Are you sure you want to delete the item: {{item.name}} ?</h3>
 <form action="{{ url_for('deleteItem',item_id = item.id)}}" method = "post">
     <button type="submit" name="confirm">Confirm Delete</button>

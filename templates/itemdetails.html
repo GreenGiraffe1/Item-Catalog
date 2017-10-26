@@ -3,18 +3,13 @@
 {% include "create.html" %}
 
 <h1>This is the Item Details Page for the Page Creator</h1>
-
 <h3>{{item.name}}</h3>
-
 <p>{{item.description}}</p>
-
 <a href="{{url_for('editItem', item_id = item.id)}}">
     <button type="button" name="edit">Edit</button>
 </a>
-
 <a href="{{url_for('deleteItem', item_id = item.id)}}">
     <button type="button" name="delete">Delete</button>
 </a>
-
 
 {% endblock %}

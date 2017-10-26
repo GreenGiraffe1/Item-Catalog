@@ -2,9 +2,7 @@
 {% block content %}
 
 <h3>This is the New Item Page</h3>
-
 <form action="{{ url_for('newItem')}}" method = "post">
-
     <label for="name">Name:</label>
     <br>
     <input type="text" name="name" value="">
@@ -18,8 +16,6 @@
             <input type="radio" name="catagory" value="{{catagory.id}}" checked="checked"> {{catagory.name}} <br>
         {% endfor %}
     </div>
-
-
     <br>
     <br>
     <button type="submit" name="confirm">Confirm Create</button>
