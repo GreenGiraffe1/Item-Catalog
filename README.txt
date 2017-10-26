@@ -15,6 +15,36 @@ from doing the same, or from creating new content themselves.
 Begin the setup by making sure you have an active Internet connection, and
 cloning all files from GitHub to the same local directory.
 
+You'll need to sign-up for accounts with Facebook and Google if you haven't
+already, and create a new app with each provider:
+* For Google, you'll go to their
+[developer site](https://console.developers.google.com), login, and click on
+the carrot tab in the top left. It will open a menu where you'll click the
+plus "+" sign to create a new project. You'll give it a name, and then click
+on the "credentials"  item in the left-hand menu. Click "create credentials",
+and select "OAuth client ID" from the drop-down. Click on "configure consent
+screen", and fill it out for your application (only an email and product
+name are required to begin). On the next page choose the radio button for
+"Web Appliation", and give it a name, and enter your Authorized JavaScript
+origins, and Authorized redirect URIs. You'll then be presented with your
+client ID, and client secret. Add the client ID to ```login.html```, and
+download the associated JSON file by clicking on the download icon to the
+right. Rename the downloaded file to ```client_secrets.json``` and place it in
+the main directory where you cloned this repository.
+* For Facebook you'll go to their
+[developer site](https://developers.facebook.com/), sign-in, and in the
+top-right corner, in the drop-down menu, select add a new App. You'll give it
+a name, and on the next page you'll click "+Add Product" and choose "Facebook
+Login". Under settings you'll enter in your redirect URI for your project.
+You'll need to add the App ID, and client secrets to the file
+```fb_client_secrets.json```. You'll also add the App ID to ```login.html```
+where the Facebook JavaScript SDK is initialized.
+
+
+##### To deploy your this application with your own items / categories you'll need to:
+* Obtain a [Google Maps API key](https://developers.google.com/maps/documentation/embed/get-api-key)
+
+
 ## Usage:
 To begin using this WebApp, make sure all files are in the same local directory
 and that you have an active Internet connection.
