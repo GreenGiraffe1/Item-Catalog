@@ -19,6 +19,7 @@ body {
 }
 .footer {
     /*background-color: green;*/
+    display: inline-flex;
 }
 .header {
     /*background-color: orange;*/
