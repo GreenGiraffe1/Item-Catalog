@@ -1,3 +1,25 @@
+* {
+    outline: 1px solid red !important;
+    /*min-height: 100px;*/
+}
 body {
-    
+    /*background-color: lightblue;*/
+}
+.middle {
+    /*background-color: red;*/
+}
+.items {
+    /*background-color: blue;*/
+}
+.categories {
+    /*background-color: purple;*/
+}
+.title {
+    /*background-color: lightgreen;*/
+}
+.footer {
+    /*background-color: green;*/
+}
+.header {
+    /*background-color: orange;*/
 }
