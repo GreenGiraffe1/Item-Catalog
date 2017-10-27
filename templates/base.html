@@ -28,7 +28,7 @@
                             <span>You're not currently logged in.</span>
                             <a class="inbut" href="{{url_for('showLogin')}}"><button class="inbut" type="button" name="login">Login</button></a>
                         {% else %}
-                            <img class="img-fluid prof-pic" src="http://via.placeholder.com/50x50">
+                            <img class="img-fluid prof-pic" src="{{picture}}">
                             <span>You're currently logged in as <b>{{username}}</b></span>
                             <a href="{{url_for('disconnect')}}"><button type="button" name="logout">Log Out</button></a>
                         {% endif %}
