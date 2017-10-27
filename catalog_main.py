@@ -38,7 +38,7 @@ def showCatalog():
         catagories = session.query(Catagory).order_by(asc(Catagory.name))
         processors = session.query(Item).order_by(asc(Item.name))
         return render_template('home.html', processors=processors,
-                                catagories=catagories)
+                                catagories=catagories, username=login_session['username'])
 
 
 @app.route('/category/<int:catagory_id>/')
