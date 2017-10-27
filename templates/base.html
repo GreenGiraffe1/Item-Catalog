@@ -28,9 +28,16 @@
                             <span>You're not currently logged in.</span>
                             <a class="inbut" href="{{url_for('showLogin')}}"><button class="inbut" type="button" name="login">Login</button></a>
                         {% else %}
-                            <img class="img-fluid prof-pic" src="{{picture}}">
-                            <span>You're currently logged in as <b>{{username}}</b></span>
-                            <a href="{{url_for('disconnect')}}"><button type="button" name="logout">Log Out</button></a>
+                            <div class="left">
+                                <img class="img-fluid prof-pic" src="{{picture}}">
+                                <span class="logmsg">You're currently logged in as <b>{{username}}</b></span>
+                            </div>
+                            <div class="right">
+
+
+                                <a href="{{url_for('disconnect')}}"><button type="button" class="butt" name="logout">Log Out</button></a>
+
+                            </div>
                         {% endif %}
                     </div>
 

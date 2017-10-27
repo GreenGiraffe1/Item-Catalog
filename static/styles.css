@@ -46,3 +46,13 @@ body {
 .prof-pic {
     max-width: 50px;
 }
+.left {
+    /*display: inline-grid;*/
+
+}
+.butt {
+    float: right;
+}
+.logmsg {
+    vertical-align: bottom;
+}
