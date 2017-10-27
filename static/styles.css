@@ -43,3 +43,6 @@ body {
     /*float: right;*/
 
 }
+.prof-pic {
+    max-width: 100px;
+}
