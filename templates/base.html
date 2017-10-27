@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <title>Catalog Web App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-        <div class="buttons">
+        <div class="container-fluid buttons header">
             {% if 'username' not in session %}
                 <a href="{{url_for('showLogin')}}"><button type="button" name="login">Login</button></a>
             {% else %}
                 <a href="{{url_for('disconnect')}}"><button type="button" name="logout">Log Out</button></a>
             {% endif %}
         </div>
-        <a href="{{url_for('showCatalog')}}"><h1>Catalog Web App</h1></a>
-        <hr>
-        <div class = 'flash'>
+        <div class="container-fluid title">
+            <h1><a href="{{url_for('showCatalog')}}">Catalog Web App</a></h1>
+        </div>
+        <div class="container-fluid flash">
             {% with messages = get_flashed_messages() %}
             {% if messages %}
             <ul>
@@ -28,6 +32,10 @@
         <div class="container">
             {% block content %}
             {% endblock %}
+        </div>
+        <div class="container-fluid footer">
+            <p>Created under the <a href="#">Creative Common's License</a>.</p>
+            <p>View this projects code on <a href="#">GitHub</a>.</p>
         </div>
     </body>
 </html>
