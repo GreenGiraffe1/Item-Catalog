@@ -62,10 +62,14 @@ def showItem(item_id):
     if 'username' not in login_session:
         return render_template('itemdetailspublic.html', item=item)
     if login_session['user_id'] != item.user_id:
-        return render_template('itemdetailspublic.html', item=item)
+        return render_template('itemdetailspublic.html', item=item,
+                               username=login_session['username'],
+                               picture=login_session['picture'])
     else:
         # user = session.query(User).filter_by(id=login_session['user_id']).one()
-        return render_template('itemdetails.html', item=item, username=login_session['username'], picture=login_session['picture'])
+        return render_template('itemdetails.html', item=item,
+                               username=login_session['username'],
+                               picture=login_session['picture'])
 
 
 @app.route('/item/<int:item_id>/edit/', methods=['GET','POST'])
