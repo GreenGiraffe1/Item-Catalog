@@ -1,3 +1,4 @@
+
 * {
     outline: 1px solid red !important;
     /*min-height: 100px;*/
@@ -35,6 +36,9 @@ body {
     float: right;
     /*margin-right: 0;
     margin-left: auto;*/
+    display: inline-flex;
+    vertical-align: baseline;
+    margin-top: 20px;
 
 }
 .header-old {
@@ -52,7 +56,28 @@ body {
 }
 .butt {
     float: right;
+
 }
 .logmsg {
     vertical-align: bottom;
+}
+.right {
+    display: inline-grid;
+    float: right;
+}
+h1 {
+    /*font-size: 45px;*/
+}
+.loggedout {
+    margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+    .site-title {
+        text-align: center;
+    }
+    .log-in-out {
+        /*float: none;*/
+        /*margin: 0 0 auto;*/
+    }
 }
