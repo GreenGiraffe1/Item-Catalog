@@ -19,11 +19,27 @@ body {
 }
 .footer {
     /*background-color: green;*/
-    display: inline-flex;
+    /*display: inline-flex;*/
 }
 .header {
     /*background-color: orange;*/
+
+
 }
 .createnew {
     margin-left: 50px;
+}
+.login-functions {
+}
+.log-in-out {
+    float: right;
+    /*margin-right: 0;
+    margin-left: auto;*/
+
+}
+.header-old {
+}
+.inbut {
+    /*float: right;*/
+
 }

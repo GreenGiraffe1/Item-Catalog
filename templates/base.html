@@ -8,19 +8,30 @@
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-        <div class="container-fluid buttons header">
+        <!-- <div class="container-fluid buttons header-old">
             {% if 'username' not in session %}
                 <a href="{{url_for('showLogin')}}"><button type="button" name="login">Login</button></a>
             {% else %}
                 <a href="{{url_for('disconnect')}}"><button type="button" name="logout">Log Out</button></a>
             {% endif %}
-        </div>
-        <div class="container-fluid title">
+        </div> -->
+        <div class="container-fluid header">
             <div class="row">
-                <div class="col-xs-6 site-title">
+                <div class="col-xs-12 col-sm-6 site-title">
                     <h1><a href="{{url_for('showCatalog')}}">Catalog Web App</a></h1>
                 </div>
-                <div class="col-xs-6 login-functions">
+                <div class="col-xs-12 col-sm-6 login-functions">
+                    <div class="log-in-out">
+
+
+                        {% if 'username' not in session %}
+                            <span>You're not currently logged in.</span>
+                            <a class="inbut" href="{{url_for('showLogin')}}"><button class="inbut" type="button" name="login">Login</button></a>
+                        {% else %}
+                            <span>You're currently logged in as <b>{{username}}</b></span>
+                            <a href="{{url_for('disconnect')}}"><button type="button" name="logout">Log Out</button></a>
+                        {% endif %}
+                    </div>
 
                 </div>
             </div>
@@ -41,8 +52,13 @@
             {% endblock %}
         </div>
         <div class="container-fluid footer">
-            <span>Created under the <a href="#">Creative Common's License</a>.</span>
-            <span>View this projects code on <a href="#">GitHub</a>.</span>
+            <hr>
+            <div class="col-xs-12 col-sm-6">
+                <p>Created under the <a href="#">Creative Common's License</a>.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <p>View the code for this project on <a href="#">GitHub</a>.</p>
+            </div>
         </div>
     </body>
 </html>
