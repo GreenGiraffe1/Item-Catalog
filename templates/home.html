@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- {% include "create.html" %} -->
+
+<div class="row">
+    <!-- <div class="col-xs-1"></div>
+    <div class="col-xs-11"> -->
+        {% if 'username' not in session %}
+
+        {% else %}
+            {% include "create.html" %}
+        {% endif %}
+    <!-- </div> -->
+</div>
 <div class="row middle">
     <div class="col-xs-1"></div>
     <div class="col-sm-5 col-xs-11 categories">
