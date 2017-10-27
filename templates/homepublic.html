@@ -1,31 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="row banner main">
-        <div class="col-md-1"></div>
-        <div class="col-md-11 padding-none">
-            <h1>Categories</h1>
-            <div class="item-list">
-                {% for catagory in catagories %}
-                    <a href="{{url_for('showSummary', catagory_id = catagory.id)}}">
-                        <h5 class="item">{{catagory.name}}</h3>
-                    </a>
-                {% endfor %}
-            </div>
+<div class="row middle">
+    <div class="col-xs-1"></div>
+    <div class="col-sm-5 col-xs-11 categories">
+        <h1>Categories</h1>
+        <div class="category-list">
+            {% for catagory in catagories %}
+                    <h5 class="category">
+                        <a href="{{url_for('showSummary', catagory_id = catagory.id)}}">{{catagory.name}}</a>
+                    </h3>
+            {% endfor %}
         </div>
     </div>
-    <div class="row banner main">
-        <div class="col-md-1"></div>
-        <div class="col-md-11 padding-none">
-            <h1>Items</h1>
-            <div class="item-list">
-                {% for item in processors %}
-                    <a href="{{url_for('showItem', item_id = item.id)}}">
-                        <h5 class="item">{{item.name}}</h3>
-                    </a>
-                {% endfor %}
-            </div>
+    <div class="col-xs-1"></div>
+    <div class="col-sm-5 col-xs-11 items">
+        <h1>Items</h1>
+        <div class="item-list">
+            {% for item in processors %}
+                    <h5 class="item">
+                        <a href="{{url_for('showItem', item_id = item.id)}}">{{item.name}}</a>
+                    </h3>
+            {% endfor %}
         </div>
     </div>
+</div>
 
 {% endblock %}
