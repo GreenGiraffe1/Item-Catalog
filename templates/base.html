@@ -5,9 +5,11 @@
         <title>Catalog Web App</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
+
         <!-- <div class="container-fluid buttons header-old">
             {% if 'username' not in session %}
                 <a href="{{url_for('showLogin')}}"><button type="button" name="login">Login</button></a>
@@ -44,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <hr>
+        <!-- <hr> -->
         <div class="container-fluid flash">
             {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -56,12 +58,12 @@
             {% endif %}
             {% endwith %}
         </div>
-        <div class="container">
+        <div class="container block-stuff">
             {% block content %}
             {% endblock %}
         </div>
         <div class="container-fluid footer">
-            <hr>
+            <!-- <hr> -->
             <div class="col-xs-12 col-sm-6">
                 <p>Created under the <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Common's License</a>.</p>
             </div>

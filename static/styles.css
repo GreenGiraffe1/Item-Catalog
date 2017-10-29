@@ -1,19 +1,44 @@
 
 * {
-    outline: 1px solid red !important;
+    /*outline: 1px solid red !important;*/
     /*min-height: 100px;*/
 }
 body {
     /*background-color: lightblue;*/
+    background-color: #F4F7F8;
+    /*background-color: blue;*/
 }
 .middle {
     /*background-color: red;*/
+    margin-top: 5vh;
 }
 .items {
+    background-color: lightgray;
+    /*outline: 1px solid black !important;*/
+    box-shadow: 3px 3px 3px grey;
+    border-radius: 15px;
+
+
+
     /*background-color: blue;*/
 }
 .categories {
-    /*background-color: purple;*/
+    background-color: lightgray;
+    /*outline: 1px solid black !important;*/
+    box-shadow: 3px 3px 3px grey;
+    /*display: block;*/
+    /*height: 100%;*/
+    /*padding-bottom: inherit;*/
+    /*height: 100vmin;*/
+    /*min-height: 100%;*/
+    border-radius: 15px;
+}
+
+.category, .item {
+    /*border-top: solid black 1px;*/
+    padding-bottom: 2px;
+    border-bottom: solid gray 1px;
+
 }
 .title {
     /*background-color: lightgreen;*/
@@ -21,12 +46,31 @@ body {
 .footer {
     /*background-color: green;*/
     /*display: inline-flex;*/
+    background-color: #2e3b4c;
+    color: white;
+    padding-top: 3vh;
+    /*height: 100vh;*/
+
+
+}
+.block-stuff {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    /*background-color: purple;*/
 }
 .header {
-    /*background-color: orange;*/
+    background-color: #2e3b4c;
+    /*margin-bottom: 3vh;*/
+    padding-bottom: 3vh;
 
 
 }
+html {
+    background-color: #2e3b4c;
+}
+/*.container-fluid {
+    height: 100%;
+}*/
 .createnew {
     margin-left: 50px;
 }
@@ -38,7 +82,8 @@ body {
     margin-left: auto;*/
     display: inline-flex;
     vertical-align: baseline;
-    margin-top: 20px;
+    margin-top: 3vh;
+    color: white;
 
 }
 .header-old {
@@ -72,6 +117,42 @@ h1 {
     margin-top: 5px;
 }
 
+.row.is-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row.is-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+* And with max cross-browser enabled.
+* Nobody should ever write this by hand.
+* Use a preprocesser with autoprefixing.
+*/
+.row.is-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.row.is-flex > [class*='col-'] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
 @media (max-width: 767px) {
     .site-title {
         text-align: center;
@@ -79,5 +160,12 @@ h1 {
     .log-in-out {
         /*float: none;*/
         /*margin: 0 0 auto;*/
+    }
+    .items, .categories {
+        /*box-shadow: 3px 3px 3px grey;*/
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+
     }
 }
