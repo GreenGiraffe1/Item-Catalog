@@ -54,6 +54,9 @@ This project was created while I was taking the Udacity Full-Stack Nanodegree,
 and significant chunks of the structure / ideas behind the structure were
 provided by the course author. [INSERT STUFF]
 
+got the responsive column height matching from:
+https://scotch.io/bar-talk/different-tricks-on-how-to-make-bootstrap-columns-all-the-same-height
+
 This project uses the [OAuth2.0](https://oauth.net/2/) framework to support 3rd party login.
 
 [SQLAlchemy](http://www.sqlalchemy.org/) is employed as an Object Relational
