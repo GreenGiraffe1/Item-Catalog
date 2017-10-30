@@ -13,7 +13,7 @@ body {
     margin-top: 5vh;
 }
 
-.form-area, .items, .item-details, .cat-summary, .categories {
+.delete-form, .form-area, .items, .item-details, .cat-summary, .categories {
     background-color: lightgray;
     /*outline: 1px solid black !important;*/
     box-shadow: 3px 3px 3px grey;
@@ -39,8 +39,12 @@ body {
     border-bottom: solid gray 1px;
 
 }
-.edit-buttons {
+.item-to-delete {
+    text-align: center;
+}
+.form-buttons {
     padding-bottom: 5px;
+    text-align: center;
 }
 .title {
     /*background-color: lightgreen;*/
@@ -172,7 +176,7 @@ h1 {
         /*float: none;*/
         /*margin: 0 0 auto;*/
     }
-    .form-area, .item-details, .cat-summary, .items, .categories {
+    .delete-form, .form-area, .item-details, .cat-summary, .items, .categories {
         /*box-shadow: 3px 3px 3px grey;*/
         box-shadow: none;
         border-radius: 0;

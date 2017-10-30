@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>This is the Delete Item Page</h1>
-<h3>Are you sure you want to delete the item: {{item.name}} ?</h3>
-<form action="{{ url_for('deleteItem',item_id = item.id)}}" method = "post">
-    <button type="submit" name="confirm">Confirm Delete</button>
-    <br><br>
-    <a href="{{url_for('showItem', item_id = item.id)}}">
-        <button type="button" name="cancel">Cancel</button>
-    </a>
-</form>
+<div class="row middle">
+    <div class="delete-form col-xs-7">
+        <h2>Are you sure you want to delete item:</h2>
+        <h2 class="item-to-delete"><b>{{item.name}}</b></h2>
+        <form action="{{ url_for('deleteItem',item_id = item.id)}}" method = "post">
+            <div class="form-buttons">
+                <button type="submit" name="confirm">Confirm Delete</button>
+                <a href="{{url_for('showItem', item_id = item.id)}}">
+                    <button type="button" name="cancel">Cancel</button>
+                </a>
+            </div>
+        </form>
+    </div>
+    <div class="col-xs-5"></div>
+</div>
+
 
 {% endblock %}
