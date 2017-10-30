@@ -1,15 +1,6 @@
 # Catalog Web App
 
-**Catalog Web App** is a project that display a catalog of computer
-components. The component item is organized into one of several categories.
-The items can be displayed by as one long comprehensive list, or grouped
-into a list by selecting a particular category. An item's detailed
-description can be viewed by clicking on an item. **Catalog Web App**
-supports user registration, and logging via Facebook Login or Google Login
-OAuth2.0 verification. User's who are signed-in are able to create new items,
-and edit or delete items they've created. Permissions are in place to prevent
-users from modifying other users' content, and to prevent non-registered users
-from doing the same, or from creating new content themselves.
+**Catalog Web App** is a project that displays a catalog of items, and allows users to interact with them. Component items are organized into one of several categories. The items can be displayed as one long comprehensive list, or grouped into sub-lists by category. An item's detailed description can be viewed by clicking on an item. **Catalog Web App** supports user registration, and logging via Facebook Login or Google Login OAuth2.0 verification. User's who are signed-in are able to create new items, and edit or delete items they've created. Permissions are in place to prevent users from modifying other users' content, and to prevent non-registered users from doing the same, or from creating new content themselves.
 
 ## Setup:
 Begin the setup by making sure you have an active Internet connection, and
