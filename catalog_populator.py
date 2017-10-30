@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database_setup import Catagory, Base, Item, User
+from database_setup import Category, Base, Item, User
 
 engine = create_engine('sqlite:///itemcatalog.db')
 # Bind the engine to the metadata of the Base class so that the
@@ -27,25 +27,25 @@ session.add(user1)
 session.commit()
 
 # Menu for UrbanBurger
-catagory1 = Catagory(name="Computer Processors")
-session.add(catagory1)
+category1 = Category(name="Computer Processors")
+session.add(category1)
 session.commit()
 
 item1 = Item(user_id=1, name="Intel i7-7700K", description="4 cores, 8 threads running at base-clock of 4.2GHz",
-             catagory=catagory1)
+             category=category1)
 
 session.add(item1)
 session.commit()
 
 
 item2 = Item(user_id=1, name="Intel i5-7600K", description="4 cores, 4 threads running at base-clock of 3.8GHz",
-             catagory=catagory1)
+             category=category1)
 session.add(item2)
 session.commit()
 
 
-catagory2 = Catagory(name="Graphics Cards")
-session.add(catagory2)
+category2 = Category(name="Graphics Cards")
+session.add(category2)
 session.commit()
 
 
@@ -53,29 +53,29 @@ session.commit()
 
 
 item3 = Item(user_id=1, name="GTX 1080", description="PUT SOMETHING HERE",
-             catagory=catagory2)
+             category=category2)
 session.add(item3)
 session.commit()
 
 item4 = Item(user_id=1, name="RX 580 8GB", description="PUT SOMETHING HERE",
-             catagory=catagory2)
+             category=category2)
 session.add(item4)
 session.commit()
 
-catagory3 = Catagory(name="Computer Monitors")
-session.add(catagory3)
+category3 = Category(name="Computer Monitors")
+session.add(category3)
 session.commit()
 
 
 item5 = Item(user_id=1, name="ASUS 23.8 inch ", description="PUT SOMETHING HERE",
-             catagory=catagory3)
+             category=category3)
 session.add(item5)
 session.commit()
 
 
 
 item6 = Item(user_id=1, name="HP OMEN 25", description="PUT SOMETHING HERE",
-             catagory=catagory3)
+             category=category3)
 session.add(item6)
 session.commit()
 
@@ -90,6 +90,6 @@ session.commit()
 
 
 
-print "Added Items & Catagories to App!"
+print "Added Items & Categories to App!"
 
 # END

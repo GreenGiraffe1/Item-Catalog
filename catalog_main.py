@@ -27,7 +27,7 @@ from flask import session as login_session
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
 
-from database_setup import Base, User, Catagory, Item
+from database_setup import Base, User, Category, Item
 
 
 app = Flask(__name__)
@@ -45,31 +45,31 @@ session = DBSession()
 @app.route('/catalog/')
 def show_catalog():
     """Display catalog home page."""
-    catagories = session.query(Catagory).order_by(asc(Catagory.name))
+    categories = session.query(Category).order_by(asc(Category.name))
     processors = session.query(Item).order_by(asc(Item.name))
     if 'username' not in login_session:
         return render_template('homepublic.html', processors=processors,
-                                catagories=catagories)
+                                categories=categories)
     else:
-        catagories = session.query(Catagory).order_by(asc(Catagory.name))
+        categories = session.query(Category).order_by(asc(Category.name))
         processors = session.query(Item).order_by(asc(Item.name))
         return render_template('home.html', processors=processors,
-                                catagories=catagories,
+                                categories=categories,
                                 username=login_session['username'],
                                 picture=login_session['picture'])
 
 
-@app.route('/category/<int:catagory_id>/')
-def category_summary(catagory_id):
+@app.route('/category/<int:category_id>/')
+def category_summary(category_id):
     """Display all items belonging to the category selected."""
-    catagory = session.query(Catagory).filter_by(id=catagory_id).one()
-    items = session.query(Item).filter_by(catagory_id=catagory_id).all()
+    category = session.query(Category).filter_by(id=category_id).one()
+    items = session.query(Item).filter_by(category_id=category_id).all()
     if 'username' not in login_session:
         return render_template('categorysummarypublic.html',
-                               catagory=catagory,
+                               category=category,
                                items=items)
     else:
-        return render_template('categorysummary.html', catagory=catagory,
+        return render_template('categorysummary.html', category=category,
                                 items=items,
                                 username=login_session['username'],
                                 picture=login_session['picture'])
@@ -99,7 +99,7 @@ def edit_item(item_id):
     if 'username' not in login_session:
         return redirect('/login')
     editedItem = session.query(Item).filter_by(id=item_id).one()
-    catagories = session.query(Catagory).all()
+    categories = session.query(Category).all()
     if login_session['user_id'] != editedItem.user_id:
         return ("<script>function myFunction() {alert('You are not "
                 + "authorized to edit this item. Please create your "
@@ -107,22 +107,22 @@ def edit_item(item_id):
                 + "onload='myFunction()''>")
     if request.method == 'POST':
         if not (request.form['name'] and request.form['description']
-                and request.form['catagory']):
+                and request.form['category']):
             flash('All fields must be specified to edit an new item.')
             return redirect(url_for('edit_item', item_id=item_id))
         if request.form['name']:
             editedItem.name = request.form['name']
         if request.form['description']:
             editedItem.description = request.form['description']
-        if request.form['catagory']:
-            editedItem.catagory_id = request.form['catagory']
+        if request.form['category']:
+            editedItem.category_id = request.form['category']
         session.add(editedItem)
         session.commit()
         flash('Item Successfully Edited')
         return redirect(url_for('item_details', item_id=item_id))
     else:
         return render_template('edititem.html', item=editedItem,
-                                catagories=catagories,
+                                categories=categories,
                                 username=login_session['username'],
                                 picture=login_session['picture'])
 
@@ -156,22 +156,22 @@ def new_item():
     """Display page where sign-in users can create new items."""
     if 'username' not in login_session:
         return redirect('/login')
-    catagories = session.query(Catagory).all()
+    categories = session.query(Category).all()
     if request.method == 'POST':
         if not (request.form['name'] and request.form['description']
-                and request.form['catagory']):
+                and request.form['category']):
             flash('All fields must be specified to create a new item.')
             return redirect(url_for('new_item'))
         item = Item(name=request.form['name'],
                        description=request.form['description'],
-                       catagory_id=request.form['catagory'],
+                       category_id=request.form['category'],
                        user_id=login_session['user_id'])
         session.add(item)
         session.commit()
         flash('New Item Successfully Created')
         return redirect(url_for('show_catalog'))
     else:
-        return render_template('newitem.html', catagories=catagories,
+        return render_template('newitem.html', categories=categories,
                                username=login_session['username'],
                                picture=login_session['picture'])
 

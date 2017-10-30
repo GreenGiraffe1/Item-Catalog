@@ -28,10 +28,10 @@ class User(Base):
         }
 
 
-class Catagory(Base):
+class Category(Base):
     """Object holding information about item categories"""
 
-    __tablename__ = 'catagory'
+    __tablename__ = 'category'
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
 
@@ -52,15 +52,15 @@ class Item(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
     description = Column(String(5000), nullable=False)
-    catagory_id = Column(Integer, ForeignKey('catagory.id'))
-    catagory = relationship(Catagory)
+    category_id = Column(Integer, ForeignKey('category.id'))
+    category = relationship(Category)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
     @property
     def serialize(self):
         """return Item object data in serializable format"""
-        
+
         return {
             'name'          : self.name,
             'description'   : self.description,

@@ -16,9 +16,9 @@
     <div class="col-sm-5 col-xs-11 categories">
         <h2>Categories</h2>
         <div class="category-list">
-            {% for catagory in catagories %}
+            {% for category in categories %}
                     <h5 class="category">
-                        <a href="{{url_for('category_summary', catagory_id = catagory.id)}}">{{catagory.name}}</a>
+                        <a href="{{url_for('category_summary', category_id = category.id)}}">{{category.name}}</a>
                     </h3>
             {% endfor %}
         </div>

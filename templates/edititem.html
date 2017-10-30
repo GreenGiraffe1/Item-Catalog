@@ -16,8 +16,8 @@
             <br><br>
             <label for="name">Category:</label>
             <div class="radio-list">
-                {% for catagory in catagories %}
-                    <input type="radio" name="catagory" value="{{catagory.id}}" checked="checked"> {{catagory.name}} <br>
+                {% for category in categories %}
+                    <input type="radio" name="category" value="{{category.id}}" checked="checked"> {{category.name}} <br>
                 {% endfor %}
             </div>
             <br>
