@@ -91,6 +91,7 @@ html {
 }
 .left {
     /*display: inline-grid;*/
+    margin-right: 5px;
 
 }
 .butt {

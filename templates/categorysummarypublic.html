@@ -1,13 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h1>{{catagory.name}}</h1>
-    <div class="item-list">
-        {% for item in items %}
-            <a href="{{url_for('showItem', item_id = item.id)}}">
-                <h5 class="item">{{item.name}}</h3>
-            </a>
-        {% endfor %}
+<div class="row middle">
+    <!-- <div class="col-xs-1"></div> -->
+    <div class="cat-summary col-xs-6">
+        <h2>{{catagory.name}}</h2>
+        <div class="item-list">
+            {% for item in items %}
+
+                    <h5 class="item">
+                        <a href="{{url_for('showItem', item_id = item.id)}}">{{item.name}}</a>
+                    </h3>
+
+            {% endfor %}
+        </div>
     </div>
-    
+    <div class="col-xs-6"></div>
+
+</div>
+
 {% endblock %}
