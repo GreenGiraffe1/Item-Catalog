@@ -12,17 +12,8 @@ body {
     /*background-color: red;*/
     margin-top: 5vh;
 }
-.items {
-    background-color: lightgray;
-    /*outline: 1px solid black !important;*/
-    box-shadow: 3px 3px 3px grey;
-    border-radius: 15px;
 
-
-
-    /*background-color: blue;*/
-}
-.categories {
+.items, .cat-summary, .categories {
     background-color: lightgray;
     /*outline: 1px solid black !important;*/
     box-shadow: 3px 3px 3px grey;
@@ -32,6 +23,9 @@ body {
     /*height: 100vmin;*/
     /*min-height: 100%;*/
     border-radius: 15px;
+}
+.cat-summary {
+    /*padding: 15px;*/
 }
 
 .category, .item {
@@ -161,7 +155,7 @@ h1 {
         /*float: none;*/
         /*margin: 0 0 auto;*/
     }
-    .items, .categories {
+    .cat-summary, .items, .categories {
         /*box-shadow: 3px 3px 3px grey;*/
         box-shadow: none;
         border-radius: 0;
