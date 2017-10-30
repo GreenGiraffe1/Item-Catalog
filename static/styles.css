@@ -12,7 +12,9 @@ body {
     /*background-color: red;*/
     margin-top: 5vh;
 }
-
+.flash {
+    color: red;
+}
 .delete-form, .form-area, .items, .item-details, .cat-summary, .categories {
     background-color: lightgray;
     /*outline: 1px solid black !important;*/
