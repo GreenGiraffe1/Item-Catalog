@@ -1,15 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- {% include "create.html" %} -->
 
-<h1>This is the Item Details Page for the Page Creator</h1>
-<h3>{{item.name}}</h3>
-<p>{{item.description}}</p>
-<a href="{{url_for('editItem', item_id = item.id)}}">
-    <button type="button" name="edit">Edit</button>
-</a>
-<a href="{{url_for('deleteItem', item_id = item.id)}}">
-    <button type="button" name="delete">Delete</button>
-</a>
+<div class="row create-row">
+        {% if 'username' not in session %}
+        {% else %}
+            {% include "create.html" %}
+        {% endif %}
+</div>
+<div class="row middle">
+    <div class="item-details col-xs-8">
+        <h2>{{item.name}}</h2>
+        <p class="item-description">{{item.description}}</p>
+        <div class="options">
+            <a href="{{url_for('editItem', item_id = item.id)}}">
+                <button type="button" name="edit">Edit</button>
+            </a>
+            <a href="{{url_for('deleteItem', item_id = item.id)}}">
+                <button type="button" name="delete">Delete</button>
+            </a>
 
+        </div>
+    </div>
+    <div class="col-xs-4"></div>
+
+</div>
 {% endblock %}

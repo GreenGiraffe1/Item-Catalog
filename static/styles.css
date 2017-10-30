@@ -13,7 +13,7 @@ body {
     margin-top: 5vh;
 }
 
-.items, .cat-summary, .categories {
+.items, .item-details, .cat-summary, .categories {
     background-color: lightgray;
     /*outline: 1px solid black !important;*/
     box-shadow: 3px 3px 3px grey;
@@ -27,7 +27,12 @@ body {
 .cat-summary {
     /*padding: 15px;*/
 }
-
+.options {
+    margin-bottom: 5px;
+}
+.item-description {
+    /*margin-left: 20px;*/
+}
 .category, .item {
     /*border-top: solid black 1px;*/
     padding-bottom: 2px;
@@ -156,7 +161,7 @@ h1 {
         /*float: none;*/
         /*margin: 0 0 auto;*/
     }
-    .cat-summary, .items, .categories {
+    .item-details, .cat-summary, .items, .categories {
         /*box-shadow: 3px 3px 3px grey;*/
         box-shadow: none;
         border-radius: 0;
