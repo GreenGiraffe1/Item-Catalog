@@ -13,7 +13,7 @@ body {
     margin-top: 5vh;
 }
 
-.items, .item-details, .cat-summary, .categories {
+.form-area, .items, .item-details, .cat-summary, .categories {
     background-color: lightgray;
     /*outline: 1px solid black !important;*/
     box-shadow: 3px 3px 3px grey;
@@ -38,6 +38,9 @@ body {
     padding-bottom: 2px;
     border-bottom: solid gray 1px;
 
+}
+.edit-buttons {
+    padding-bottom: 5px;
 }
 .title {
     /*background-color: lightgreen;*/
@@ -106,6 +109,14 @@ html {
 .logmsg {
     vertical-align: bottom;
 }
+textarea {
+    /*overflow: hidden;*/
+    /*margin: auto;*/
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
 .right {
     display: inline-grid;
     float: right;
@@ -161,7 +172,7 @@ h1 {
         /*float: none;*/
         /*margin: 0 0 auto;*/
     }
-    .item-details, .cat-summary, .items, .categories {
+    .form-area, .item-details, .cat-summary, .items, .categories {
         /*box-shadow: 3px 3px 3px grey;*/
         box-shadow: none;
         border-radius: 0;
