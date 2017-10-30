@@ -209,7 +209,7 @@ def allItemsJSON():
 
 
 # User Helper Functions
-def createUser(login_session):
+def create_user(login_session):
     """Creates a new user in the User table of the database given a
     valid login session.
     """
@@ -221,14 +221,14 @@ def createUser(login_session):
     user = session.query(User).filter_by(email=login_session['email']).one()
     return user.id
 
-def getUserInfo(user_id):
+def get_user_info(user_id):
     """Retrieve and return a user's info, given a valid user ID as
     input.
     """
     user = session.query(User).filter_by(id=user_id).one()
     return user
 
-def getUserID(email):
+def get_user_id(email):
     """Retrieve and return a user's ID, given a valid user email as
     input.
     """
@@ -289,9 +289,9 @@ def fbconnect():
     data = json.loads(result)
     login_session['picture'] = data["data"]["url"]
     # see if user exists in my database - if not add them
-    user_id = getUserID(login_session['email'])
+    user_id = get_user_id(login_session['email'])
     if not user_id:
-        user_id = createUser(login_session)
+        user_id = create_user(login_session)
     login_session['user_id'] = user_id
     output = ''
     output += '<h1>Welcome, '
@@ -392,9 +392,9 @@ def gconnect():
     login_session['picture'] = data['picture']
     login_session['email'] = data['email']
     # Set user_id , and create new user in database, if they are new.
-    user_id = getUserID(login_session['email'])
+    user_id = get_user_id(login_session['email'])
     if not user_id:
-        user_id = createUser(login_session)
+        user_id = create_user(login_session)
     login_session['user_id'] = user_id
     output = ''
     output += '<h1>Welcome, '
