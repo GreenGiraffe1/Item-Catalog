@@ -19,7 +19,7 @@
             {% for item in items %}
 
                     <h5 class="item">
-                        <a href="{{url_for('showItem', item_id = item.id)}}">{{item.name}}</a>
+                        <a href="{{url_for('item_details', item_id = item.id)}}">{{item.name}}</a>
                     </h3>
 
             {% endfor %}

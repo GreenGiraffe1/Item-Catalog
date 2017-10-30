@@ -16,7 +16,7 @@
         <div class="container-fluid header">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 site-title">
-                    <h1><a href="{{url_for('showCatalog')}}">Catalog Web App</a></h1>
+                    <h1><a href="{{url_for('show_catalog')}}">Catalog Web App</a></h1>
                 </div>
                 <div class="col-xs-12 col-sm-6 login-functions ">
                     <div class="log-in-out">
@@ -24,7 +24,7 @@
 
                         {% if 'username' not in session %}
                             <span class="loggedout">You're not currently logged in.</span>
-                            <a class="inbut" href="{{url_for('showLogin')}}"><button class="inbut" type="button" name="login">Login</button></a>
+                            <a class="inbut" href="{{url_for('show_login')}}"><button class="inbut" type="button" name="login">Login</button></a>
                         {% else %}
                             <div class="left">
                                 <img class="img-fluid prof-pic" src="{{picture}}">

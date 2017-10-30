@@ -8,7 +8,7 @@
         <div class="category-list">
             {% for catagory in catagories %}
                     <h5 class="category">
-                        <a href="{{url_for('showSummary', catagory_id = catagory.id)}}">{{catagory.name}}</a>
+                        <a href="{{url_for('category_summary', catagory_id = catagory.id)}}">{{catagory.name}}</a>
                     </h3>
             {% endfor %}
         </div>
@@ -19,7 +19,7 @@
         <div class="item-list">
             {% for item in processors %}
                     <h5 class="item">
-                        <a href="{{url_for('showItem', item_id = item.id)}}">{{item.name}}</a>
+                        <a href="{{url_for('item_details', item_id = item.id)}}">{{item.name}}</a>
                     </h3>
             {% endfor %}
         </div>

@@ -5,10 +5,10 @@
     <div class="delete-form col-xs-7">
         <h2>Are you sure you want to delete item:</h2>
         <h2 class="item-to-delete"><b>{{item.name}}</b></h2>
-        <form action="{{ url_for('deleteItem',item_id = item.id)}}" method = "post">
+        <form action="{{ url_for('delete_item',item_id = item.id)}}" method = "post">
             <div class="form-buttons">
                 <button type="submit" name="confirm">Confirm Delete</button>
-                <a href="{{url_for('showItem', item_id = item.id)}}">
+                <a href="{{url_for('item_details', item_id = item.id)}}">
                     <button type="button" name="cancel">Cancel</button>
                 </a>
             </div>

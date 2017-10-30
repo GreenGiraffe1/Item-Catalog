@@ -2,7 +2,7 @@
 {% block content %}
 
 <h3>This is the New Item Page</h3>
-<form action="{{ url_for('newItem')}}" method = "post">
+<form action="{{url_for('new_item')}}" method = "post">
     <label for="name">Name:</label>
     <br>
     <input type="text" name="name" value="">
@@ -21,7 +21,7 @@
     <br>
     <button type="submit" name="confirm">Confirm Create</button>
     <br><br>
-    <a href="{{url_for('showCatalog')}}">
+    <a href="{{url_for('show_catalog')}}">
         <button type="button" name="cancel">Cancel</button>
     </a>
 </form>

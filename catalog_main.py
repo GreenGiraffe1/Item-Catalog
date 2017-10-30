@@ -43,7 +43,7 @@ session = DBSession()
 
 @app.route('/')
 @app.route('/catalog/')
-def showCatalog():
+def show_catalog():
     """Display catalog home page."""
     catagories = session.query(Catagory).order_by(asc(Catagory.name))
     processors = session.query(Item).order_by(asc(Item.name))
@@ -60,7 +60,7 @@ def showCatalog():
 
 
 @app.route('/category/<int:catagory_id>/')
-def showSummary(catagory_id):
+def category_summary(catagory_id):
     """Display all items belonging to the category selected."""
     catagory = session.query(Catagory).filter_by(id=catagory_id).one()
     items = session.query(Item).filter_by(catagory_id=catagory_id).all()
@@ -76,7 +76,7 @@ def showSummary(catagory_id):
 
 
 @app.route('/item/<int:item_id>/')
-def showItem(item_id):
+def item_details(item_id):
     """Displays details page for the selected item."""
     item = session.query(Item).filter_by(id=item_id).one()
     if 'username' not in login_session:
@@ -92,7 +92,7 @@ def showItem(item_id):
 
 
 @app.route('/item/<int:item_id>/edit/', methods=['GET','POST'])
-def editItem(item_id):
+def edit_item(item_id):
     """Display page where a signed-in item creator can update the
     selected item's details.
     """
@@ -109,7 +109,7 @@ def editItem(item_id):
         if not (request.form['name'] and request.form['description']
                 and request.form['catagory']):
             flash('All fields must be specified to edit an new item.')
-            return redirect(url_for('editItem', item_id=item_id))
+            return redirect(url_for('edit_item', item_id=item_id))
         if request.form['name']:
             editedItem.name = request.form['name']
         if request.form['description']:
@@ -119,7 +119,7 @@ def editItem(item_id):
         session.add(editedItem)
         session.commit()
         flash('Item Successfully Edited')
-        return redirect(url_for('showItem', item_id=item_id))
+        return redirect(url_for('item_details', item_id=item_id))
     else:
         return render_template('edititem.html', item=editedItem,
                                 catagories=catagories,
@@ -128,7 +128,7 @@ def editItem(item_id):
 
 
 @app.route('/item/<int:item_id>/delete/', methods=['GET','POST'])
-def deleteItem(item_id):
+def delete_item(item_id):
     """Display page where a signed-in item creator can delete the
     selected item.
     """
@@ -144,7 +144,7 @@ def deleteItem(item_id):
         session.delete(item)
         session.commit()
         flash('Item Successfully Deleted')
-        return redirect(url_for('showCatalog'))
+        return redirect(url_for('show_catalog'))
     else:
         return render_template('deleteitem.html', item=item,
                                username=login_session['username'],
@@ -152,7 +152,7 @@ def deleteItem(item_id):
 
 
 @app.route('/item/new/', methods=['GET','POST'])
-def newItem():
+def new_item():
     """Display page where sign-in users can create new items."""
     if 'username' not in login_session:
         return redirect('/login')
@@ -161,15 +161,15 @@ def newItem():
         if not (request.form['name'] and request.form['description']
                 and request.form['catagory']):
             flash('All fields must be specified to create a new item.')
-            return redirect(url_for('newItem'))
-        newItem = Item(name=request.form['name'],
+            return redirect(url_for('new_item'))
+        item = Item(name=request.form['name'],
                        description=request.form['description'],
                        catagory_id=request.form['catagory'],
                        user_id=login_session['user_id'])
-        session.add(newItem)
+        session.add(item)
         session.commit()
         flash('New Item Successfully Created')
-        return redirect(url_for('showCatalog'))
+        return redirect(url_for('show_catalog'))
     else:
         return render_template('newitem.html', catagories=catagories,
                                username=login_session['username'],
@@ -177,7 +177,7 @@ def newItem():
 
 
 @app.route('/login')
-def showLogin():
+def show_login():
     """Display the login page."""
     # Create anti-forgery state token
     state = ''.join(random.choice(string.ascii_uppercase + string.digits)
@@ -189,7 +189,7 @@ def showLogin():
 # JSON API's
 # Item Details
 @app.route('/item/<int:item_id>/JSON')
-def itemJSON(item_id):
+def item_json(item_id):
     """Display detailed information about the selected item in JSON
     format.
     """
@@ -200,7 +200,7 @@ def itemJSON(item_id):
 #Items by category - List All
 @app.route('/JSON')
 @app.route('/catalog/JSON')
-def allItemsJSON():
+def all_items_json():
     """Display detailed information for all the items in the database
     in JSON format.
     """
@@ -250,7 +250,7 @@ def fbconnect():
     if this is the first time a particular user has logged in.
     Flash confirmation message when a user successfully logs in, or
     an error message when log-in is unsuccessful.
-    """7
+    """
     if request.args.get('state') != login_session['state']:
         response = make_response(json.dumps('Invalid state parameter.'), 401)
         response.headers['Content-Type'] = 'application/json'
@@ -464,10 +464,10 @@ def disconnect():
             print login_session
         else:
             print 'no login_session'
-        return redirect(url_for('showCatalog'))
+        return redirect(url_for('show_catalog'))
     else:
         flash("You were not logged in")
-        return redirect(url_for('showCatalog'))
+        return redirect(url_for('show_catalog'))
 
 
 if __name__ == '__main__':

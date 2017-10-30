@@ -3,7 +3,7 @@
 
 <div class="row middle">
     <div class="form-area col-xs-11 col-sm-9 col-md-7 col-lg-6">
-        <form action="{{ url_for('editItem',item_id = item.id)}}" method = "post">
+        <form action="{{ url_for('edit_item',item_id = item.id)}}" method = "post">
             <h2>Editing Item: <b>{{item.name}}</b></h2>
             <label for="name">Name:</label>
             <br>
@@ -25,7 +25,7 @@
             <div class="form-buttons">
                 <button type="submit" name="confirm">Confirm Edit</button>
                 <!-- <br><br> -->
-                <a href="{{url_for('showItem', item_id = item.id)}}">
+                <a href="{{url_for('item_details', item_id = item.id)}}">
                     <button type="button" name="cancel">Cancel</button>
                 </a>
             </div>
