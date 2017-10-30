@@ -35,11 +35,12 @@ def showCatalog():
         return render_template('homepublic.html', processors=processors,
                                 catagories=catagories)
     else:
-        # user = session.query(User).filter_by(id=login_session['user_id']).one()
         catagories = session.query(Catagory).order_by(asc(Catagory.name))
         processors = session.query(Item).order_by(asc(Item.name))
         return render_template('home.html', processors=processors,
-                                catagories=catagories, username=login_session['username'], picture=login_session['picture'])
+                                catagories=catagories,
+                                username=login_session['username'],
+                                picture=login_session['picture'])
 
 
 @app.route('/category/<int:catagory_id>/')
@@ -51,9 +52,10 @@ def showSummary(catagory_id):
                                catagory=catagory,
                                items=items)
     else:
-        # user = session.query(User).filter_by(id=login_session['user_id']).one()
         return render_template('categorysummary.html', catagory=catagory,
-                                items=items, username=login_session['username'], picture=login_session['picture'])
+                                items=items,
+                                username=login_session['username'],
+                                picture=login_session['picture'])
 
 
 @app.route('/item/<int:item_id>/')
@@ -66,7 +68,6 @@ def showItem(item_id):
                                username=login_session['username'],
                                picture=login_session['picture'])
     else:
-        # user = session.query(User).filter_by(id=login_session['user_id']).one()
         return render_template('itemdetails.html', item=item,
                                username=login_session['username'],
                                picture=login_session['picture'])
@@ -100,7 +101,9 @@ def editItem(item_id):
         return redirect(url_for('showItem', item_id=item_id))
     else:
         return render_template('edititem.html', item=editedItem,
-                                catagories=catagories, username=login_session['username'], picture=login_session['picture'])
+                                catagories=catagories,
+                                username=login_session['username'],
+                                picture=login_session['picture'])
 
 
 @app.route('/item/<int:item_id>/delete/', methods=['GET','POST'])
@@ -119,7 +122,9 @@ def deleteItem(item_id):
         flash('Item Successfully Deleted')
         return redirect(url_for('showCatalog'))
     else:
-        return render_template('deleteitem.html', item=item, username=login_session['username'], picture=login_session['picture'])
+        return render_template('deleteitem.html', item=item,
+                               username=login_session['username'],
+                               picture=login_session['picture'])
 
 
 @app.route('/item/new/', methods=['GET','POST'])
@@ -141,7 +146,9 @@ def newItem():
         flash('New Item Successfully Created')
         return redirect(url_for('showCatalog'))
     else:
-        return render_template('newitem.html', catagories=catagories, username=login_session['username'], picture=login_session['picture'])
+        return render_template('newitem.html', catagories=catagories,
+                               username=login_session['username'],
+                               picture=login_session['picture'])
 
 
 # Create anti-forgery state token
