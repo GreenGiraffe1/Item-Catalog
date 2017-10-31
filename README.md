@@ -6,9 +6,9 @@
 Begin the setup by making sure you have an active Internet connection, and
 cloning all files from GitHub to the same local directory.
 
-You'll need to sign-up for accounts with Facebook and Google if you haven't
-already, and create a new app with each provider:
-* For Google, you'll go to their
+###### You'll need to have accounts with Facebook and Google, and create a new app ID with each provider:
+
+* For **Google**, you'll go to their
 [developer site](https://console.developers.google.com), login, and click on
 the carrot tab in the top left. It will open a menu where you'll click the
 plus "+" sign to create a new project. You'll give it a name, and then click
@@ -22,7 +22,7 @@ client ID, and client secret. Add the client ID to ```login.html```, and
 download the associated JSON file by clicking on the download icon to the
 right. Rename the downloaded file to ```client_secrets.json``` and place it in
 the main directory where you cloned this repository.
-* For Facebook you'll go to their
+* For **Facebook** you'll go to their
 [developer site](https://developers.facebook.com/), sign-in, and in the
 top-right corner, in the drop-down menu, select add a new App. You'll give it
 a name, and on the next page you'll click "+Add Product" and choose "Facebook
@@ -31,16 +31,20 @@ You'll need to add the App ID, and client secrets to the file
 ```fb_client_secrets.json```. You'll also add the App ID to ```login.html```
 where the Facebook JavaScript SDK is initialized.
 
+###### Initialize & Populate the database:
+From the directory containing the cloned files, run ```database_setup.py```
+to create the database, and then populate the database (using the included
+test data by running ```catalog_populator.py```, or your with own data).
+
 
 ## Usage:
 To begin using this WebApp, make sure all files are in the same local
-directory and that you have an active Internet connection. Run
-```database_setup.py``` to create the database, and then populate the database
-(using the included test data by running ```catalog_populator.py```, or your
-with own data). Then have your server run ```catalog_main.py```, and your the
-application should be accessible from your own machine at **localhost:8000**,
-or at the URL of your choosing it setup. At this point all functionality will
-be active and users can begin logging-in and adding content.
+directory and that you have an active Internet connection. At this point you
+should also have already setup and populated the database. Run
+```catalog_main.py```, and your the application should be accessible from your
+own machine at **localhost:8000**, or at the URL of your choosing, if setup.
+At this point all functionality will be active and users with access can
+begin logging-in and adding content.
 
 ## Attribution:
 This project was created while I was taking the Udacity Full-Stack Nanodegree,
