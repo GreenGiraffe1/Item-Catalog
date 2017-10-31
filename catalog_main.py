@@ -52,7 +52,6 @@ def show_catalog():
                                 categories=categories)
     else:
         categories = session.query(Category).order_by(asc(Category.name))
-        # items = session.query(Item).order_by(asc(Item.name))
         return render_template('home.html', items=items,
                                 categories=categories,
                                 username=login_session['username'],
@@ -256,7 +255,6 @@ def fbconnect():
         response.headers['Content-Type'] = 'application/json'
         return response
     access_token = request.data
-    # print "access token received %s " % access_token
     app_id = (json.loads(open('fb_client_secrets.json', 'r')
               .read())['web']['app_id'])
     app_secret = (json.loads(open('fb_client_secrets.json', 'r')
@@ -458,11 +456,6 @@ def disconnect():
         del login_session['user_id']
         del login_session['provider']
         flash("You have successfully been logged out.")
-        # if login_session:
-        #     print 'this is the state of the login session'
-        #     print login_session
-        # else:
-        #     print 'no login_session'
         return redirect(url_for('show_catalog'))
     else:
         flash("You were not logged in")
