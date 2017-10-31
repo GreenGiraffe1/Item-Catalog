@@ -58,11 +58,7 @@ design functionality of the Web app. This project uses the
 [Facebook](https://www.facebook.com) & [Google](https://www.google.com).
 [SQLAlchemy](http://www.sqlalchemy.org/) is employed as an Object Relational
 Mapper (ORM) to allow me to make full use of a SQL backed database inside this
-Python application. The css code I've used to make column heights match within
-bootstrap I found in this blog
-[post](https://scotch.io/bar-talk/different-tricks-on-how-to-make-bootstrap-columns-all-the-same-height)
-on the wesite [scotch.io](https://scotch.io).
-
+Python application. 
 
 ## License:
 **Catalog Web App** is a public domain work, with license
