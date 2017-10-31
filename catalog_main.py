@@ -436,7 +436,7 @@ def gdisconnect():
         return response
 
 
-7@app.route('/disconnect')
+@app.route('/disconnect')
 def disconnect():
     """Disconnect users regardless of which login method they used.
 
