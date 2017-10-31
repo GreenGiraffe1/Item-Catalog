@@ -97,9 +97,9 @@ def edit_item(item_id):
     """
     if 'username' not in login_session:
         return redirect('/login')
-    editedItem = session.query(Item).filter_by(id=item_id).one()
+    edited_item = session.query(Item).filter_by(id=item_id).one()
     categories = session.query(Category).all()
-    if login_session['user_id'] != editedItem.user_id:
+    if login_session['user_id'] != edited_item.user_id:
         return ("<script>function myFunction() {alert('You are not "
                 + "authorized to edit this item. Please create your "
                 + "own items in order to edit them.');}</script><body "
@@ -110,17 +110,17 @@ def edit_item(item_id):
             flash('All fields must be specified to edit an new item.')
             return redirect(url_for('edit_item', item_id=item_id))
         if request.form['name']:
-            editedItem.name = request.form['name']
+            edited_item.name = request.form['name']
         if request.form['description']:
-            editedItem.description = request.form['description']
+            edited_item.description = request.form['description']
         if request.form['category']:
-            editedItem.category_id = request.form['category']
-        session.add(editedItem)
+            edited_item.category_id = request.form['category']
+        session.add(edited_item)
         session.commit()
         flash('Item Successfully Edited')
         return redirect(url_for('item_details', item_id=item_id))
     else:
-        return render_template('edititem.html', item=editedItem,
+        return render_template('edititem.html', item=edited_item,
                                 categories=categories,
                                 username=login_session['username'],
                                 picture=login_session['picture'])
