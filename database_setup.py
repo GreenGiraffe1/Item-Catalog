@@ -19,7 +19,6 @@ class User(Base):
     @property
     def serialize(self):
         """return User object data in serializable format"""
-
         return {
             'name'      :   self.name,
             'email'     :   self.email,
@@ -38,7 +37,6 @@ class Category(Base):
     @property
     def serialize(self):
         """return Category object data in serializable format"""
-
         return {
             'name'  :   self.name,
             'id'    :   self.id,
@@ -60,7 +58,6 @@ class Item(Base):
     @property
     def serialize(self):
         """return Item object data in serializable format"""
-
         return {
             'name'          : self.name,
             'description'   : self.description,
