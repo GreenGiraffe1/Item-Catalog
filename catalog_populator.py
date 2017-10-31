@@ -1,5 +1,5 @@
 """
-The purpose of this module is to load test data into the database.
+Load test data into the database.
 """
 
 
