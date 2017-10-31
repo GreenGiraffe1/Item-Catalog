@@ -32,30 +32,33 @@ You'll need to add the App ID, and client secrets to the file
 where the Facebook JavaScript SDK is initialized.
 
 
-##### To deploy your this application with your own items / categories you'll need to:
-* Obtain a [Google Maps API key](https://developers.google.com/maps/documentation/embed/get-api-key)
-
-
 ## Usage:
-To begin using this WebApp, make sure all files are in the same local directory
-and that you have an active Internet connection.
+To begin using this WebApp, make sure all files are in the same local
+directory and that you have an active Internet connection. Run
+```database_setup.py``` to create the database, and then populate the database
+(using the included test data by running ```catalog_populator.py```, or your
+with own data). Then have your server run ```catalog_main.py```, and your the
+application should be accessible from your own machine at **localhost:8000**,
+or at the URL of your choosing it setup. At this point all functionality will
+be active and users can begin logging-in and adding content.
 
 ## Attribution:
 This project was created while I was taking the Udacity Full-Stack Nanodegree,
 and significant chunks of the structure / ideas behind the structure were
-provided by the course author. [INSERT STUFF]
-
-got the responsive column height matching from:
-https://scotch.io/bar-talk/different-tricks-on-how-to-make-bootstrap-columns-all-the-same-height
-
-This project uses the [OAuth2.0](https://oauth.net/2/) framework to support 3rd party login.
-
+provided by the course author. Specifically, the OAuth2.0 / social login code
+is based heavily on that provided by the course, and the general structure of
+the application is inspired heavily be the course author's guidance. The
+[Flask](http://flask.pocoo.org/) framework for Python is used to simplify the
+design functionality of the Web app. This project uses the
+[OAuth2.0](https://oauth.net/2/) library to support 3rd party login from
+[Facebook](https://www.facebook.com) & [Google](https://www.google.com).
 [SQLAlchemy](http://www.sqlalchemy.org/) is employed as an Object Relational
 Mapper (ORM) to allow me to make full use of a SQL backed database inside this
-Python application.
+Python application. The css code I've used to make column heights match within
+bootstrap I found in this blog
+[post](https://scotch.io/bar-talk/different-tricks-on-how-to-make-bootstrap-columns-all-the-same-height)
+on the wesite [scotch.io](https://scotch.io).
 
-[Flask](http://flask.pocoo.org/) framework for Python is used to simplify the
-design functionality of the Web app.
 
 ## License:
 **Catalog Web App** is a public domain work, with license
