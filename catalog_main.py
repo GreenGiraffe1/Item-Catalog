@@ -256,7 +256,7 @@ def fbconnect():
         response.headers['Content-Type'] = 'application/json'
         return response
     access_token = request.data
-    print "access token received %s " % access_token
+    # print "access token received %s " % access_token
     app_id = (json.loads(open('fb_client_secrets.json', 'r')
               .read())['web']['app_id'])
     app_secret = (json.loads(open('fb_client_secrets.json', 'r')
@@ -405,7 +405,6 @@ def gconnect():
     output += ' " style = "width: 300px; height: 300px;border-radius: 150px;'
     output += '-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
     flash("you are now logged in as %s" % login_session['username'])
-    print "done!"
     return output
 
 
@@ -459,11 +458,11 @@ def disconnect():
         del login_session['user_id']
         del login_session['provider']
         flash("You have successfully been logged out.")
-        if login_session:
-            print 'this is the state of the login session'
-            print login_session
-        else:
-            print 'no login_session'
+        # if login_session:
+        #     print 'this is the state of the login session'
+        #     print login_session
+        # else:
+        #     print 'no login_session'
         return redirect(url_for('show_catalog'))
     else:
         flash("You were not logged in")
