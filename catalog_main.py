@@ -46,14 +46,14 @@ session = DBSession()
 def show_catalog():
     """Display catalog home page."""
     categories = session.query(Category).order_by(asc(Category.name))
-    processors = session.query(Item).order_by(asc(Item.name))
+    items = session.query(Item).order_by(asc(Item.name))
     if 'username' not in login_session:
-        return render_template('homepublic.html', processors=processors,
+        return render_template('homepublic.html', items=items,
                                 categories=categories)
     else:
         categories = session.query(Category).order_by(asc(Category.name))
-        processors = session.query(Item).order_by(asc(Item.name))
-        return render_template('home.html', processors=processors,
+        # items = session.query(Item).order_by(asc(Item.name))
+        return render_template('home.html', items=items,
                                 categories=categories,
                                 username=login_session['username'],
                                 picture=login_session['picture'])
