@@ -99,12 +99,14 @@ def edit_item(item_id):
         return redirect('/login')
     edited_item = session.query(Item).filter_by(id=item_id).one()
     categories = session.query(Category).all()
+    # Through error if user isn't the item creator
     if login_session['user_id'] != edited_item.user_id:
         return ("<script>function myFunction() {alert('You are not "
                 + "authorized to edit this item. Please create your "
                 + "own items in order to edit them.');}</script><body "
                 + "onload='myFunction()''>")
     if request.method == 'POST':
+        # Update object attributes if they've changed
         if not (request.form['name'] and request.form['description']
                 and request.form['category']):
             flash('All fields must be specified to edit an new item.')
@@ -134,6 +136,7 @@ def delete_item(item_id):
     if 'username' not in login_session:
         return redirect('/login')
     item = session.query(Item).filter_by(id=item_id).one()
+    # Through error if user isn't the item creator
     if login_session['user_id'] != item.user_id:
         return ("<script>function myFunction() {alert('You are not "
                 + "authorized to delete this item. Please create your "
@@ -157,6 +160,7 @@ def new_item():
         return redirect('/login')
     categories = session.query(Category).all()
     if request.method == 'POST':
+        # Verify that all fields are filled out
         if not (request.form['name'] and request.form['description']
                 and request.form['category']):
             flash('All fields must be specified to create a new item.')
@@ -186,7 +190,6 @@ def show_login():
 
 
 # JSON API's
-# Item Details
 @app.route('/item/<int:item_id>/JSON')
 def item_json(item_id):
     """Display detailed information about the selected item in JSON
@@ -196,7 +199,6 @@ def item_json(item_id):
     return jsonify(Item_Details=itemDetails.serialize)
 
 
-#Items by category - List All
 @app.route('/JSON')
 @app.route('/catalog/JSON')
 def all_items_json():
@@ -212,10 +214,10 @@ def create_user(login_session):
     """Creates a new user in the User table of the database given a
     valid login session.
     """
-    newUser = User(name=login_session['username'],
+    new_user = User(name=login_session['username'],
                    email=login_session['email'],
                    picture=login_session['picture'])
-    session.add(newUser)
+    session.add(new_user)
     session.commit()
     user = session.query(User).filter_by(email=login_session['email']).one()
     return user.id
@@ -250,6 +252,7 @@ def fbconnect():
     Flash confirmation message when a user successfully logs in, or
     an error message when log-in is unsuccessful.
     """
+    # Validate state token
     if request.args.get('state') != login_session['state']:
         response = make_response(json.dumps('Invalid state parameter.'), 401)
         response.headers['Content-Type'] = 'application/json'
@@ -433,8 +436,7 @@ def gdisconnect():
         return response
 
 
-# Disconnect based on provider
-@app.route('/disconnect')
+7@app.route('/disconnect')
 def disconnect():
     """Disconnect users regardless of which login method they used.
 
