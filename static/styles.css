@@ -1,15 +1,7 @@
-
-* {
-    /*outline: 1px solid red !important;*/
-    /*min-height: 100px;*/
-}
 body {
-    /*background-color: lightblue;*/
     background-color: #F4F7F8;
-    /*background-color: blue;*/
 }
 .middle {
-    /*background-color: red;*/
     margin-top: 5vh;
 }
 .flash {
@@ -17,29 +9,15 @@ body {
 }
 .delete-form, .form-area, .items, .item-details, .cat-summary, .categories {
     background-color: lightgray;
-    /*outline: 1px solid black !important;*/
     box-shadow: 3px 3px 3px grey;
-    /*display: block;*/
-    /*height: 100%;*/
-    /*padding-bottom: inherit;*/
-    /*height: 100vmin;*/
-    /*min-height: 100%;*/
     border-radius: 15px;
-}
-.cat-summary {
-    /*padding: 15px;*/
 }
 .options {
     margin-bottom: 5px;
 }
-.item-description {
-    /*margin-left: 20px;*/
-}
 .category, .item {
-    /*border-top: solid black 1px;*/
     padding-bottom: 2px;
     border-bottom: solid gray 1px;
-
 }
 .item-to-delete {
     text-align: center;
@@ -48,37 +26,22 @@ body {
     padding-bottom: 5px;
     text-align: center;
 }
-.title {
-    /*background-color: lightgreen;*/
-}
 .footer {
-    /*background-color: green;*/
-    /*display: inline-flex;*/
     background-color: #2e3b4c;
     color: white;
     padding-top: 3vh;
-    /*height: 100vh;*/
-
-
 }
 .block-stuff {
     margin-top: 3vh;
     margin-bottom: 3vh;
-    /*background-color: purple;*/
 }
 .header {
     background-color: #2e3b4c;
-    /*margin-bottom: 3vh;*/
     padding-bottom: 3vh;
-
-
 }
 html {
     background-color: #2e3b4c;
 }
-/*.container-fluid {
-    height: 100%;
-}*/
 .createnew {
     margin-left: 50px;
 }
@@ -86,38 +49,24 @@ html {
 }
 .log-in-out {
     float: right;
-    /*margin-right: 0;
-    margin-left: auto;*/
     display: inline-flex;
     vertical-align: baseline;
     margin-top: 3vh;
     color: white;
-
-}
-.header-old {
-}
-.inbut {
-    /*float: right;*/
-
 }
 .prof-pic {
     max-width: 50px;
 }
 .left {
-    /*display: inline-grid;*/
     margin-right: 5px;
-
 }
 .butt {
     float: right;
-
 }
 .logmsg {
     vertical-align: bottom;
 }
 textarea {
-    /*overflow: hidden;*/
-    /*margin: auto;*/
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -127,13 +76,9 @@ textarea {
     display: inline-grid;
     float: right;
 }
-h1 {
-    /*font-size: 45px;*/
-}
 .loggedout {
     margin-top: 5px;
 }
-
 .row.is-flex {
     display: flex;
     flex-wrap: wrap;
@@ -142,12 +87,6 @@ h1 {
     display: flex;
     flex-direction: column;
 }
-
-/*
-* And with max cross-browser enabled.
-* Nobody should ever write this by hand.
-* Use a preprocesser with autoprefixing.
-*/
 .row.is-flex {
     display: -webkit-box;
     display: -webkit-flex;
@@ -157,7 +96,6 @@ h1 {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
-
 .row.is-flex > [class*='col-'] {
     display: -webkit-box;
     display: -webkit-flex;
@@ -174,15 +112,9 @@ h1 {
     .site-title {
         text-align: center;
     }
-    .log-in-out {
-        /*float: none;*/
-        /*margin: 0 0 auto;*/
-    }
     .delete-form, .form-area, .item-details, .cat-summary, .items, .categories {
-        /*box-shadow: 3px 3px 3px grey;*/
         box-shadow: none;
         border-radius: 0;
         width: 100%;
-
     }
 }
