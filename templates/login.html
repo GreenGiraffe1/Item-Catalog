@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <title>Catalog Web App</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <link rel="stylesheet" href="/static/styles.css">
@@ -12,7 +11,6 @@
         <script src="//apis.google.com/js/platform.js?onload=start"> </script>
     </head>
     <body>
-
         <div class="container-fluid header">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 site-title">
@@ -20,25 +18,19 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 login-functions ">
                     <div class="log-in-out">
-
-
                         {% if 'username' not in session %}
                             <span class="loggedout">You're not currently logged in.</span>
                             <a class="inbut" href="{{url_for('show_login')}}"><button class="inbut" type="button" name="login">Login</button></a>
                         {% else %}
                             <div class="left">
                                 <img class="img-fluid prof-pic" src="{{picture}}">
-
                             </div>
                             <div class="right">
-
                                 <span class="logmsg">You're logged in as <b>{{username}}</b></span>
                                 <a href="{{url_for('disconnect')}}"><button type="button" class="butt" name="logout">Log Out</button></a>
-
                             </div>
                         {% endif %}
                     </div>
-
                 </div>
             </div>
         </div>
@@ -53,9 +45,6 @@
             {% endif %}
             {% endwith %}
         </div>
-
-
-
         <div class="container block-stuff">
             <div class="row middle">
                 <h2>Please Login with Facebook or Google+</h2>
@@ -82,12 +71,10 @@
                 <fb:login-button scope="public_profile,email" onlogin="sendTokenToServer();">
                     <a href='javascript:sendTokenToServer()'>Sign in with Facebook</a>
                 </fb:login-button>
-
                 <div id="result"></div>
             </div>
         </div>
         <div class="container-fluid footer">
-            <!-- <hr> -->
             <div class="col-xs-12 col-sm-6">
                 <p>Created under the <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Common's License</a>.</p>
             </div>
@@ -95,15 +82,6 @@
                 <p>View the code for this project on <a href="https://github.com/GreenGiraffe1/fullstack-nanodegree-vm/tree/master/vagrant/catalog">GitHub</a>.</p>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
 <script>
 function signInCallback(authResult) {
     if (authResult['code']) {
@@ -132,9 +110,6 @@ function signInCallback(authResult) {
     }); }
 }
 </script>
-<!--END GOOGLE PLUS SIGN IN BUTTON -->
-
-<!--Begin FaceBook SIGN IN -->
 <script>
     window.fbAsyncInit = function() {
         FB.init({
@@ -184,8 +159,5 @@ function signInCallback(authResult) {
     }
 
 </script>
-
-
-
     </body>
 </html>

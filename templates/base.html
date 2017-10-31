@@ -5,18 +5,9 @@
         <title>Catalog Web App</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
     </head>
     <body>
-
-        <!-- <div class="container-fluid buttons header-old">
-            {% if 'username' not in session %}
-                <a href="{{url_for('show_login')}}"><button type="button" name="login">Login</button></a>
-            {% else %}
-                <a href="{{url_for('disconnect')}}"><button type="button" name="logout">Log Out</button></a>
-            {% endif %}
-        </div> -->
         <div class="container-fluid header">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 site-title">
@@ -24,29 +15,22 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 login-functions ">
                     <div class="log-in-out">
-
-
                         {% if 'username' not in session %}
                             <span class="loggedout">You're not currently logged in.</span>
                             <a class="inbut" href="{{url_for('show_login')}}"><button class="inbut" type="button" name="login">Login</button></a>
                         {% else %}
                             <div class="left">
                                 <img class="img-fluid prof-pic" src="{{picture}}">
-
                             </div>
                             <div class="right">
-
                                 <span class="logmsg">You're logged in as <b>{{username}}</b></span>
                                 <a href="{{url_for('disconnect')}}"><button type="button" class="butt" name="logout">Log Out</button></a>
-
                             </div>
                         {% endif %}
                     </div>
-
                 </div>
             </div>
         </div>
-        <!-- <hr> -->
         <div class="container-fluid flash">
             {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -63,7 +47,6 @@
             {% endblock %}
         </div>
         <div class="container-fluid footer">
-            <!-- <hr> -->
             <div class="col-xs-12 col-sm-6">
                 <p>Created under the <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Common's License</a>.</p>
             </div>

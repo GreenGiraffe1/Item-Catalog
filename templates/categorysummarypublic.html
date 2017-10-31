@@ -2,21 +2,17 @@
 {% block content %}
 
 <div class="row middle">
-    <!-- <div class="col-xs-1"></div> -->
     <div class="cat-summary col-xs-6">
         <h2>{{category.name}}</h2>
         <div class="item-list">
             {% for item in items %}
-
                     <h5 class="item">
                         <a href="{{url_for('item_details', item_id = item.id)}}">{{item.name}}</a>
                     </h3>
-
             {% endfor %}
         </div>
     </div>
     <div class="col-xs-6"></div>
-
 </div>
 
 {% endblock %}
