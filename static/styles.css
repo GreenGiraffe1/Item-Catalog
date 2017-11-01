@@ -65,7 +65,12 @@ html {
 .left {
     margin-right: 5px;
 }
-.butt {
+.logbutton {
+    float: right;
+    width: 100%;
+}
+.loglink {
+    width: 50%;
     float: right;
 }
 .logmsg {
@@ -80,6 +85,10 @@ textarea {
 }
 input {
     margin-bottom: 30px;
+}
+.logdiv {
+    float: right;
+
 }
 .right {
     display: inline-grid;
