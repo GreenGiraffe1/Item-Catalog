@@ -1,29 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3>This is the New Item Page</h3>
-<form action="{{url_for('new_item')}}" method = "post">
-    <label for="name">Name:</label>
-    <br>
-    <input type="text" name="name" value="">
-    <br><br>
-    <label for="name">Description:</label>
-    <br>
-    <textarea name="description" rows="8" cols="80"></textarea>
-    <br><br>
-    <label for="name">Category:</label>
-    <div class="radio-list">
-        {% for category in categories %}
-            <input type="radio" name="category" value="{{category.id}}" checked="checked"> {{category.name}} <br>
-        {% endfor %}
+<div class="row middle">
+    <div class="form-area col-xs-11 col-sm-9 col-md-7 col-lg-6">
+        <form action="{{url_for('new_item')}}" method = "post">
+            <h2>Enter the Properties of the new Item:</h2>
+            <label for="name">Name:</label>
+            <br>
+            <input type="text" name="name" value="">
+            <br><br>
+            <label for="name">Description:</label>
+            <div class="">
+                <textarea name="description" rows="8" cols="60"></textarea>
+            </div>
+            <br><br>
+            <label for="name">Category:</label>
+            <div class="radio-list">
+                {% for category in categories %}
+                    <input type="radio" name="category" value="{{category.id}}" checked="checked"> {{category.name}} <br>
+                {% endfor %}
+            </div>
+            <br>
+            <br>
+            <div class="form-buttons">
+                <button type="submit" name="confirm">Confirm Edit</button>
+                <a href="{{url_for('show_catalog')}}">
+                    <button type="button" name="cancel">Cancel</button>
+                </a>
+            </div>
+        </form>
     </div>
-    <br>
-    <br>
-    <button type="submit" name="confirm">Confirm Create</button>
-    <br><br>
-    <a href="{{url_for('show_catalog')}}">
-        <button type="button" name="cancel">Cancel</button>
-    </a>
-</form>
+    <div class="col-xs-1 col-sm-3 col-md-5 col-lg-6"></div>
+</div>
 
 {% endblock %}
