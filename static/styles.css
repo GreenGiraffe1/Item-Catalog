@@ -12,6 +12,10 @@ body {
     box-shadow: 3px 3px 3px grey;
     border-radius: 15px;
 }
+pre {
+    background-color: lightgray;
+    border: none;
+}
 .options {
     margin-bottom: 5px;
 }
