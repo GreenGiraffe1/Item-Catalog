@@ -6,22 +6,19 @@
         <form action="{{ url_for('edit_item',item_id = item.id)}}" method = "post">
             <h2>Editing Item: <b>{{item.name}}</b></h2>
             <label for="name">Name:</label>
-            <br>
             <input type="text" name="name" value="{{item.name}}">
-            <br><br>
             <label for="name">Description:</label>
             <div class="">
                 <textarea name="description" rows="8" cols="60">{{item.description}}</textarea>
             </div>
-            <br><br>
             <label for="name">Category:</label>
             <div class="radio-list">
                 {% for category in categories %}
-                    <input type="radio" name="category" value="{{category.id}}" checked="checked"> {{category.name}} <br>
+                    <div class="radio">
+                        <input type="radio" name="category" value="{{category.id}}" checked="checked">{{category.name}}
+                    </div>
                 {% endfor %}
             </div>
-            <br>
-            <br>
             <div class="form-buttons">
                 <button type="submit" name="confirm">Confirm Edit</button>
                 <a href="{{url_for('item_details', item_id = item.id)}}">

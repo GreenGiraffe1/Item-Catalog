@@ -6,22 +6,19 @@
         <form action="{{url_for('new_item')}}" method = "post">
             <h2>Enter the Properties of the new Item:</h2>
             <label for="name">Name:</label>
-            <br>
             <input type="text" name="name" value="">
-            <br><br>
             <label for="name">Description:</label>
             <div class="">
                 <textarea name="description" rows="8" cols="60"></textarea>
             </div>
-            <br><br>
             <label for="name">Category:</label>
             <div class="radio-list">
                 {% for category in categories %}
-                    <input type="radio" name="category" value="{{category.id}}" checked="checked"> {{category.name}} <br>
+                    <div class="radio">
+                        <input type="radio" name="category" value="{{category.id}}" checked="checked">{{category.name}}
+                    </div>
                 {% endfor %}
             </div>
-            <br>
-            <br>
             <div class="form-buttons">
                 <button type="submit" name="confirm">Confirm</button>
                 <a href="{{url_for('show_catalog')}}">

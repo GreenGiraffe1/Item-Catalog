@@ -29,6 +29,7 @@ pre {
 .form-buttons {
     padding-bottom: 5px;
     text-align: center;
+    margin-top: 50px;
 }
 .footer {
     background-color: #2e3b4c;
@@ -75,6 +76,10 @@ textarea {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
+    margin-bottom: 30px;
+}
+input {
+    margin-bottom: 30px;
 }
 .right {
     display: inline-grid;
@@ -83,7 +88,9 @@ textarea {
 .loggedout {
     margin-top: 5px;
 }
-
+label {
+    display: block;
+}
 
 @media (max-width: 767px) {
     .site-title {
