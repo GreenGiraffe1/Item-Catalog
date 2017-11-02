@@ -25,10 +25,10 @@ class User(Base):
     def serialize(self):
         """return User object data in serializable format"""
         return {
-            'name'      :   self.name,
-            'email'     :   self.email,
-            'picture'   :   self.picture,
-            'id'        :   self.id,
+            'name':     self.name,
+            'email':    self.email,
+            'picture':  self.picture,
+            'id':       self.id,
         }
 
 
@@ -43,8 +43,8 @@ class Category(Base):
     def serialize(self):
         """return Category object data in serializable format"""
         return {
-            'name'  :   self.name,
-            'id'    :   self.id,
+            'name': self.name,
+            'id':   self.id,
         }
 
 
@@ -64,9 +64,9 @@ class Item(Base):
     def serialize(self):
         """return Item object data in serializable format"""
         return {
-            'name'          : self.name,
-            'description'   : self.description,
-            'id'            : self.id,
+            'name':        self.name,
+            'description': self.description,
+            'id':          self.id,
         }
 
 
