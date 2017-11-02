@@ -32,9 +32,9 @@ from database_setup import Base, User, Category, Item
 
 app = Flask(__name__)
 CLIENT_ID = (json.loads(open('client_secrets.json', 'r').read())
-                                                         ['web']['client_id'])
+             ['web']['client_id'])
 APPLICATION_NAME = "Catalog Web App"
-#Connect to Database and create database session
+# Connect to Database and create database session
 engine = create_engine('sqlite:///itemcatalog.db')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
@@ -49,13 +49,13 @@ def show_catalog():
     items = session.query(Item).order_by(asc(Item.name))
     if 'username' not in login_session:
         return render_template('homepublic.html', items=items,
-                                categories=categories)
+                               categories=categories)
     else:
         categories = session.query(Category).order_by(asc(Category.name))
         return render_template('home.html', items=items,
-                                categories=categories,
-                                username=login_session['username'],
-                                picture=login_session['picture'])
+                               categories=categories,
+                               username=login_session['username'],
+                               picture=login_session['picture'])
 
 
 @app.route('/category/<int:category_id>/')
@@ -69,9 +69,9 @@ def category_summary(category_id):
                                items=items)
     else:
         return render_template('categorysummary.html', category=category,
-                                items=items,
-                                username=login_session['username'],
-                                picture=login_session['picture'])
+                               items=items,
+                               username=login_session['username'],
+                               picture=login_session['picture'])
 
 
 @app.route('/item/<int:item_id>/')
@@ -90,7 +90,7 @@ def item_details(item_id):
                                picture=login_session['picture'])
 
 
-@app.route('/item/<int:item_id>/edit/', methods=['GET','POST'])
+@app.route('/item/<int:item_id>/edit/', methods=['GET', 'POST'])
 def edit_item(item_id):
     """Display page where a signed-in item creator can update the
     selected item's details.
@@ -102,13 +102,14 @@ def edit_item(item_id):
     # Through error if user isn't the item creator
     if login_session['user_id'] != edited_item.user_id:
         return ("<script>function myFunction() {alert('You are not "
-                + "authorized to edit this item. Please create your "
-                + "own items in order to edit them.');}</script><body "
-                + "onload='myFunction()''>")
+                "authorized to edit this item. Please create your "
+                "own items in order to edit them.');}</script><body "
+                "onload='myFunction()''>")
     if request.method == 'POST':
         # Update object attributes if they've changed
-        if not (request.form['name'] and request.form['description']
-                and request.form['category']):
+        if not (request.form['name'] and
+                request.form['description'] and
+                request.form['category']):
             flash('All fields must be specified to edit an new item.')
             return redirect(url_for('edit_item', item_id=item_id))
         if request.form['name']:
@@ -123,12 +124,12 @@ def edit_item(item_id):
         return redirect(url_for('item_details', item_id=item_id))
     else:
         return render_template('edititem.html', item=edited_item,
-                                categories=categories,
-                                username=login_session['username'],
-                                picture=login_session['picture'])
+                               categories=categories,
+                               username=login_session['username'],
+                               picture=login_session['picture'])
 
 
-@app.route('/item/<int:item_id>/delete/', methods=['GET','POST'])
+@app.route('/item/<int:item_id>/delete/', methods=['GET', 'POST'])
 def delete_item(item_id):
     """Display page where a signed-in item creator can delete the
     selected item.
@@ -139,9 +140,9 @@ def delete_item(item_id):
     # Through error if user isn't the item creator
     if login_session['user_id'] != item.user_id:
         return ("<script>function myFunction() {alert('You are not "
-                + "authorized to delete this item. Please create your "
-                + "own items in order to delete them.');}</script>"
-                + "<body onload='myFunction()''>")
+                "authorized to delete this item. Please create your "
+                "own items in order to delete them.');}</script>"
+                "<body onload='myFunction()''>")
     if request.method == 'POST':
         session.delete(item)
         session.commit()
@@ -153,7 +154,7 @@ def delete_item(item_id):
                                picture=login_session['picture'])
 
 
-@app.route('/item/new/', methods=['GET','POST'])
+@app.route('/item/new/', methods=['GET', 'POST'])
 def new_item():
     """Display page where sign-in users can create new items."""
     if 'username' not in login_session:
@@ -161,14 +162,15 @@ def new_item():
     categories = session.query(Category).all()
     if request.method == 'POST':
         # Verify that all fields are filled out
-        if not (request.form['name'] and request.form['description']
-                and request.form['category']):
+        if not (request.form['name'] and
+                request.form['description'] and
+                request.form['category']):
             flash('All fields must be specified to create a new item.')
             return redirect(url_for('new_item'))
         item = Item(name=request.form['name'],
-                       description=request.form['description'],
-                       category_id=request.form['category'],
-                       user_id=login_session['user_id'])
+                    description=request.form['description'],
+                    category_id=request.form['category'],
+                    user_id=login_session['user_id'])
         session.add(item)
         session.commit()
         flash('New Item Successfully Created')
@@ -215,12 +217,13 @@ def create_user(login_session):
     valid login session.
     """
     new_user = User(name=login_session['username'],
-                   email=login_session['email'],
-                   picture=login_session['picture'])
+                    email=login_session['email'],
+                    picture=login_session['picture'])
     session.add(new_user)
     session.commit()
     user = session.query(User).filter_by(email=login_session['email']).one()
     return user.id
+
 
 def get_user_info(user_id):
     """Retrieve and return a user's info, given a valid user ID as
@@ -228,6 +231,7 @@ def get_user_info(user_id):
     """
     user = session.query(User).filter_by(id=user_id).one()
     return user
+
 
 def get_user_id(email):
     """Retrieve and return a user's ID, given a valid user email as
@@ -263,16 +267,16 @@ def fbconnect():
     app_secret = (json.loads(open('fb_client_secrets.json', 'r')
                   .read())['web']['app_secret'])
     url = ('https://graph.facebook.com/oauth/access_token?grant_'
-          + 'type=fb_exchange_token&client_id=%s&client_secret=%s&fb_'
-          + 'exchange_token=%s') % (app_id, app_secret, access_token)
+           'type=fb_exchange_token&client_id=%s&client_secret=%s&fb_'
+           'exchange_token=%s') % (app_id, app_secret, access_token)
     h = httplib2.Http()
     result = h.request(url, 'GET')[1]
     # Use token to get user info from API
     userinfo_url = "https://graph.facebook.com/v2.10/me"
     # format result to pull out and store long-lived access token
     token = result.split(',')[0].split(':')[1].replace('"', '')
-    url = ('https://graph.facebook.com/v2.10/me?access_token=%s&fields=name'
-          + ',id,email') % token
+    url = ('https://graph.facebook.com/v2.10/me?access_token=%s&fields=name' +
+           ',id,email') % token
     h = httplib2.Http()
     result = h.request(url, 'GET')[1]
     data = json.loads(result)
@@ -283,8 +287,8 @@ def fbconnect():
     # The token must be stored in the login_session in order to properly logout
     login_session['access_token'] = token
     # Get user picture
-    url = ('https://graph.facebook.com/v2.10/me/picture?access_token=%s'
-          + '&redirect=0&height=200&width=200') % token
+    url = ('https://graph.facebook.com/v2.10/me/picture?access_token=%s' +
+           '&redirect=0&height=200&width=200') % token
     h = httplib2.Http()
     result = h.request(url, 'GET')[1]
     data = json.loads(result)
@@ -313,7 +317,7 @@ def fbdisconnect():
     # The access token must me included to successfully logout
     access_token = login_session['access_token']
     url = ('https://graph.facebook.com/%s/permissions?access_token=%s'
-          % (facebook_id,access_token))
+           % (facebook_id, access_token))
     h = httplib2.Http()
     result = h.request(url, 'DELETE')[1]
     return "you have been logged out"
@@ -377,7 +381,7 @@ def gconnect():
     stored_gplus_id = login_session.get('gplus_id')
     if stored_access_token is not None and gplus_id == stored_gplus_id:
         response = make_response(json.dumps('Current user is already '
-                                           + 'connected.'),200)
+                                            'connected.'), 200)
         response.headers['Content-Type'] = 'application/json'
         return response
     # Store the access token in the session for later use.
@@ -420,18 +424,18 @@ def gdisconnect():
         response.headers['Content-Type'] = 'application/json'
         return response
     url = ('https://accounts.google.com/o/oauth2/revoke?token=%s'
-          % access_token)
+           % access_token)
     h = httplib2.Http()
     result = h.request(url, 'GET')[0]
     if result['status'] == '200':
         del login_session['access_token']
         response = make_response(json.dumps('Successfully disconnected.'),
-                                            200)
+                                 200)
         response.headers['Content-Type'] = 'application/json'
         return response
     else:
-        response = make_response(json.dumps('Failed to revoke token for given'
-                                           + ' user.', 400))
+        response = make_response(json.dumps('Failed to revoke token for ' +
+                                            'given user.', 400))
         response.headers['Content-Type'] = 'application/json'
         return response
 
