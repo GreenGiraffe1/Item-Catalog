@@ -56,7 +56,7 @@ class Item(Base):
     name = Column(String(250), nullable=False)
     description = Column(String(5000), nullable=False)
     category_id = Column(Integer, ForeignKey('category.id'))
-    category = relationship(Category, cascade="all, delete-orphan")
+    category = relationship(Category, cascade="all, delete-orphan", single_parent=True)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
