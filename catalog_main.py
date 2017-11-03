@@ -18,11 +18,12 @@ import json
 import requests
 import random
 import string
+from functools import wraps
 
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
 from flask import Flask, render_template, request, redirect, jsonify, url_for
-from flask import make_response, flash
+from flask import make_response, flash, g
 from flask import session as login_session
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
@@ -39,6 +40,17 @@ engine = create_engine('sqlite:///itemcatalog.db')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
+
+
+def check_login_status(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'username' not in login_session:
+            flash('You must be logged in to perform that action.')
+            return redirect('/login')
+        else:
+            return f(*args, **kwargs)
+    return decorated_function
 
 
 @app.route('/')
@@ -154,11 +166,13 @@ def delete_item(item_id):
                                picture=login_session['picture'])
 
 
+
 @app.route('/item/new/', methods=['GET', 'POST'])
+@check_login_status
 def new_item():
     """Display page where sign-in users can create new items."""
-    if 'username' not in login_session:
-        return redirect('/login')
+    # if 'username' not in login_session:
+    #     return redirect('/login')
     categories = session.query(Category).all()
     if request.method == 'POST':
         # Verify that all fields are filled out
@@ -212,15 +226,7 @@ def all_items_json():
 
 
 # User Helper Functions
-def check_login_status(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if 'username' not in login_session:
-            flash('You must be logged in to perform that action.')
-            return redirect('/login')
-        else:
-            return f(*args, **kwargs)
-    return decorated_function
+
 
 
 def create_user(login_session):
