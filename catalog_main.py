@@ -212,6 +212,17 @@ def all_items_json():
 
 
 # User Helper Functions
+def check_login_status(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'username' not in login_session:
+            flash('You must be logged in to perform that action.')
+            return redirect('/login')
+        else:
+            return f(*args, **kwargs)
+    return decorated_function
+
+
 def create_user(login_session):
     """Creates a new user in the User table of the database given a
     valid login session.
