@@ -103,12 +103,11 @@ def item_details(item_id):
 
 
 @app.route('/item/<int:item_id>/edit/', methods=['GET', 'POST'])
+@check_login_status
 def edit_item(item_id):
     """Display page where a signed-in item creator can update the
     selected item's details.
     """
-    if 'username' not in login_session:
-        return redirect('/login')
     edited_item = session.query(Item).filter_by(id=item_id).one()
     categories = session.query(Category).all()
     # Through error if user isn't the item creator
@@ -142,12 +141,11 @@ def edit_item(item_id):
 
 
 @app.route('/item/<int:item_id>/delete/', methods=['GET', 'POST'])
+@check_login_status
 def delete_item(item_id):
     """Display page where a signed-in item creator can delete the
     selected item.
     """
-    if 'username' not in login_session:
-        return redirect('/login')
     item = session.query(Item).filter_by(id=item_id).one()
     # Through error if user isn't the item creator
     if login_session['user_id'] != item.user_id:
@@ -171,8 +169,6 @@ def delete_item(item_id):
 @check_login_status
 def new_item():
     """Display page where sign-in users can create new items."""
-    # if 'username' not in login_session:
-    #     return redirect('/login')
     categories = session.query(Category).all()
     if request.method == 'POST':
         # Verify that all fields are filled out
