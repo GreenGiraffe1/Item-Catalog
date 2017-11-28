@@ -3,8 +3,7 @@
 **Catalog Web App** is a project that displays a catalog of items, and allows users to interact with them. Component items are organized into one of several categories. The items can be displayed as one long comprehensive list, or grouped into sub-lists by category. An item's detailed description can be viewed by clicking on an item. **Catalog Web App** supports user registration, and logging via Facebook Login or Google Login OAuth2.0 verification. User's who are signed-in are able to create new items, and edit or delete items they've created. Permissions are in place to prevent users from modifying other users' content, and to prevent non-registered users from doing the same, or from creating new content themselves.
 
 ## Setup:
-Begin the setup by making sure you have an active Internet connection, and
-cloning all files from GitHub to the same local directory.
+Begin the setup by making sure you have an active Internet connection, and that Python 2.7x is installed on your system. Then clone all files from the GitHub repository to the same local directory.
 
 ###### You'll need to have accounts with Facebook and Google, and create a new app ID with each provider:
 
@@ -28,7 +27,7 @@ top-right corner, in the drop-down menu, select add a new App. You'll give it
 a name, and on the next page you'll click "+Add Product" and choose "Facebook
 Login". Under settings you'll enter in your redirect URI for your project.
 You'll need to add the App ID, and client secrets to the file
-```fb_client_secrets.json```. You'll also add the App ID to ```login.html```
+```fb_client_secrets_TEMPLATE.json```. You'll also add the App ID to ```login.html```
 where the Facebook JavaScript SDK is initialized.
 
 ###### Initialize & Populate the database:
@@ -51,14 +50,16 @@ This project was created while I was taking the Udacity Full-Stack Nanodegree,
 and significant chunks of the structure / ideas behind the structure were
 provided by the course author. Specifically, the OAuth2.0 / social login code
 is based heavily on that provided by the course, and the general structure of
-the application is inspired heavily be the course author's guidance. The
+the application is inspired heavily be the course author's guidance. The file
+```fb_client_secrets_TEMPLATE``` was also provided by the course author. The
 [Flask](http://flask.pocoo.org/) framework for Python is used to simplify the
 design functionality of the Web app. This project uses the
 [OAuth2.0](https://oauth.net/2/) library to support 3rd party login from
 [Facebook](https://www.facebook.com) & [Google](https://www.google.com).
 [SQLAlchemy](http://www.sqlalchemy.org/) is employed as an Object Relational
 Mapper (ORM) to allow me to make full use of a SQL backed database inside this
-Python application. 
+Python application. The [Bootstrap](https://getbootstrap.com) framework is used to organized the user
+interface.
 
 ## License:
 **Catalog Web App** is a public domain work, with license
