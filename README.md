@@ -12,9 +12,9 @@ users from modifying other users' content, and to prevent non-registered
 users from doing the same, or from creating new content themselves.
 
 ## Setup:
-Begin the setup by making sure you have an active Internet connection, and
-that Python 2.7x is installed on your system. Then clone all files from the
-GitHub repository to the same local directory.
+Begin the setup by making sure you have an active Internet connection.
+Python 2.7x and Oracle VM VirtualBox must be installed on your system. Then
+clone all files from the GitHub repository to the same local directory.
 
 ###### You'll need to have accounts with Facebook and Google, and create a new app ID with each provider:
 
@@ -41,20 +41,27 @@ You'll need to add the App ID, and client secrets to the file
 ```fb_client_secrets_TEMPLATE.json```. You'll also add the App ID to
 ```login.html``` where the Facebook JavaScript SDK is initialized.
 
+##### Setup the virtual machine:
+In the local directory where you cloned all the files run ```vagrant up```.
+This will download and install the virtual machine(VM) to your computer
+according to the specifications in ```Vagrantfile```.  Once the VM is up
+type ```vagrant ssh``` in the terminal to login to the VM. The cloned files
+in your local directory will be available inside the VM at directory location:
+**/vagrant/**.
+
 ###### Initialize & Populate the database:
-From the directory containing the cloned files, run ```database_setup.py```
-to create the database, and then populate the database (using the included
-test data by running ```catalog_populator.py```, or your with own data).
+From inside the VM, where the cloned files are present, run
+```database_setup.py``` to create the database, and then populate it
+using the included test data by running ```catalog_populator.py```.
 
 
 ## Usage:
-To begin using this WebApp, make sure all files are in the same local
-directory and that you have an active Internet connection. At this point you
-should also have already setup and populated the database. Run
-```catalog_main.py```, and your the application should be accessible from your
-own machine at **localhost:8000**, or at the URL of your choosing, if setup.
-At this point all functionality will be active and users with access can
-begin logging-in and adding content.
+After all the setup steps are complete, from inside the virtual machine run
+```catalog_main.py```. You will see the debugger open, and a series of GET
+requests will be logged. Your the application should be accessible from your
+own machine at **localhost:8000**, or at the URL of your choosing if setup.
+At this point all functionality will be active and users can begin logging-in
+and adding content.
 
 ## Attribution:
 This project was created while I was taking the Udacity Full-Stack Nanodegree,
