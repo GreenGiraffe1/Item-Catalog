@@ -1,8 +1,13 @@
+/*Site-Wide*/
+html {
+    background-color: #2e3b4c;
+}
 body {
     background-color: #F4F7F8;
 }
-.middle {
-    margin-top: 5vh;
+.block-stuff {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
 }
 .flash {
     color: red;
@@ -12,45 +17,14 @@ body {
     box-shadow: 3px 3px 3px grey;
     border-radius: 15px;
 }
-pre {
-    background-color: lightgray;
-    border: none;
+.middle {
+    margin-top: 5vh;
 }
-.options {
-    margin-bottom: 5px;
-}
-.category, .item {
-    padding-bottom: 2px;
-    border-bottom: solid gray 1px;
-}
-.item-to-delete {
-    text-align: center;
-}
-.form-buttons {
-    padding-bottom: 5px;
-    text-align: center;
-    margin-top: 50px;
-}
-.footer {
-    background-color: #2e3b4c;
-    color: white;
-    padding-top: 3vh;
-}
-.block-stuff {
-    margin-top: 3vh;
-    margin-bottom: 3vh;
-}
+
+/*Header*/
 .header {
     background-color: #2e3b4c;
     padding-bottom: 3vh;
-}
-html {
-    background-color: #2e3b4c;
-}
-.createnew {
-    margin-left: 50px;
-}
-.login-functions {
 }
 .log-in-out {
     float: right;
@@ -59,23 +33,60 @@ html {
     margin-top: 3vh;
     color: white;
 }
-.prof-pic {
-    max-width: 50px;
+.loggedout {
+    margin-top: 5px;
 }
 .left {
     margin-right: 5px;
 }
-.logbutton {
+.right {
+    display: inline-grid;
     float: right;
-    width: 100%;
+}
+.prof-pic {
+    max-width: 50px;
+}
+.logmsg {
+    vertical-align: bottom;
+}
+.logdiv {
+    float: right;
 }
 .loglink {
     width: 50%;
     float: right;
 }
-.logmsg {
-    vertical-align: bottom;
+.logbutton {
+    float: right;
+    width: 100%;
 }
+
+/*Catalog Home & Category Summary pages*/
+.category, .item {
+    padding-bottom: 2px;
+    border-bottom: solid gray 1px;
+}
+
+/*Item Details page*/
+pre {
+    background-color: lightgray;
+    border: none;
+}
+.options {
+    margin-bottom: 5px;
+}
+
+/*Delete Item page*/
+.item-to-delete {
+    text-align: center;
+}
+
+/*Create Item Button*/
+.createnew {
+    margin-left: 50px;
+}
+
+/*Input Forms*/
 textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -86,21 +97,23 @@ textarea {
 input {
     margin-bottom: 30px;
 }
-.logdiv {
-    float: right;
-
-}
-.right {
-    display: inline-grid;
-    float: right;
-}
-.loggedout {
-    margin-top: 5px;
-}
 label {
     display: block;
 }
+.form-buttons {
+    padding-bottom: 5px;
+    text-align: center;
+    margin-top: 50px;
+}
 
+/*Footer*/
+.footer {
+    background-color: #2e3b4c;
+    color: white;
+    padding-top: 3vh;
+}
+
+/*Media Queries*/
 @media (max-width: 767px) {
     .site-title {
         text-align: center;
