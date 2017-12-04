@@ -56,7 +56,7 @@ class Item(Base):
     name = Column(String(250), nullable=False)
     description = Column(String(5000), nullable=False)
     category_id = Column(Integer, ForeignKey('category.id'))
-    category = relationship(Category, cascade="all, delete-orphan", single_parent=True)
+    category = relationship(Category, cascade="all, delete-orphan", single_parent=True, backref="item")
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
@@ -69,6 +69,6 @@ class Item(Base):
             'id':          self.id,
         }
 
-
-engine = create_engine('sqlite:///itemcatalog.db')
+engine = create_engine('postgresql+psycopg2://vagrant:vagrant@localhost/itemcatalog.db')
+# engine = create_engine('sqlite:///itemcatalog.db')
 Base.metadata.create_all(engine)
