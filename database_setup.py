@@ -69,6 +69,9 @@ class Item(Base):
             'id':          self.id,
         }
 
+#  The Database must be created before this script will run successfully
 engine = create_engine('postgresql+psycopg2://vagrant:vagrant@localhost/itemcatalog.db')
 # engine = create_engine('sqlite:///itemcatalog.db')
 Base.metadata.create_all(engine)
+
+print "Database has been setup, and its tables defined"
