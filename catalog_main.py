@@ -36,7 +36,8 @@ CLIENT_ID = (json.loads(open('client_secrets.json', 'r').read())
              ['web']['client_id'])
 APPLICATION_NAME = "Catalog Web App"
 # Connect to Database and create database session
-engine = create_engine('sqlite:///itemcatalog.db')
+engine = create_engine('postgresql+psycopg2://vagrant:vagrant@localhost/itemcatalog.db')
+# engine = create_engine('sqlite:///itemcatalog.db')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
