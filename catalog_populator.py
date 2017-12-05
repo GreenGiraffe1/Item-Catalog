@@ -8,7 +8,8 @@ from sqlalchemy.orm import sessionmaker
 
 from database_setup import Category, Base, Item, User
 
-engine = create_engine('sqlite:///itemcatalog.db')
+engine = create_engine('postgresql+psycopg2://vagrant:vagrant@localhost/itemcatalog.db')
+# engine = create_engine('sqlite:///itemcatalog.db')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
