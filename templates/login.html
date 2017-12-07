@@ -122,7 +122,6 @@ function signInCallback(authResult) {
     function sendTokenToServer() {
         console.log('The function sendTokenToServer() has been called..')
         var access_token = FB.getAuthResponse()['accessToken'];
-        console.log(access_token)
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me', function(response) {
             console.log('Successful login for: ' + response.name);
