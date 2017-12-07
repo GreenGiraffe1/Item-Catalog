@@ -5,7 +5,7 @@
 psql -f refreshDB.sql
 
 # Removes leftovers from last DB setup
-#rm database_setupTWEAK.pyc
+rm database_setup.pyc
 
 # Sets up the database and its tables
 python database_setup.py
