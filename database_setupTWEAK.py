@@ -73,7 +73,7 @@ class Item(Base):
 
 #  The Database must be created before this script will run successfully
 engine = create_engine('postgresql+psycopg2://vagrant:vagrant'
-                       + '@/itemcatalog.db', echo=Flase)
+                       + '@/itemcatalog.db', echo=True)
 #     !!! Change "False" to "True" to debug the SQL !!!
 
 # engine = create_engine('sqlite:///itemcatalog.db')
