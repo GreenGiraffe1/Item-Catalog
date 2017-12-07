@@ -5,10 +5,10 @@
 psql -f refreshDB.sql
 
 # Removes leftovers from last DB setup
-rm database_setupTWEAK.pyc
+#rm database_setupTWEAK.pyc
 
 # Sets up the database and its tables
-python database_setupTWEAK.py
+python database_setup.py
 
 # Populates the DB with info
 python catalog_populator.py
