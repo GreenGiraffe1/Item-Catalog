@@ -180,7 +180,7 @@ def new_item():
             return redirect(url_for('new_item'))
         item = Item(name=request.form['name'],
                     description=request.form['description'],
-                    category_id=request.form['category'],
+                    category_id=int(request.form['category']),
                     user_id=login_session['user_id'])
         session.add(item)
         session.commit()
