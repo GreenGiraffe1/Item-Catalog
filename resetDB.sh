@@ -4,6 +4,9 @@
 # Drops Database & Re-creates it fresh
 psql -f refreshDB.sql
 
+# Removes leftovers from last DB setup
+rm database_setupTWEAK.pyc
+
 # Sets up the database and its tables
 python database_setupTWEAK.py
 
