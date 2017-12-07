@@ -28,7 +28,7 @@ from flask import session as login_session
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
 
-from database_setupTWEAK import Base, User, Category, Item
+from database_setup import Base, User, Category, Item
 
 
 app = Flask(__name__)

@@ -6,7 +6,7 @@ Load test data into the database.
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database_setupTWEAK import Category, Base, Item, User
+from database_setup import Category, Base, Item, User
 
 engine = create_engine('postgresql+psycopg2://vagrant:vagrant@localhost/itemcatalog.db')
 # engine = create_engine('sqlite:///itemcatalog.db')
