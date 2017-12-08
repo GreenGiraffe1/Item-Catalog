@@ -72,8 +72,8 @@ class Item(Base):
         }
 
 #  The Database must be created before this script will run successfully
-engine = create_engine('postgresql+psycopg2://vagrant:vagrant'
-                       + '@/itemcatalog.db', echo=True)
+engine = create_engine('postgresql+psycopg2://ubuntu:ubuntu'
+                       + '@localhost/itemcatalog.db', echo=True)
 #     !!! Change "False" to "True" to debug the SQL !!!
 
 # engine = create_engine('sqlite:///itemcatalog.db')
