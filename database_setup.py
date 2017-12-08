@@ -71,10 +71,13 @@ class Item(Base):
             'id':          self.id,
         }
 
-#  The Database must be created before this script will run successfully
-engine = create_engine('postgresql+psycopg2://ubuntu:ubuntu'
+# Connect to Database and create database session in Vagrant Virtual Machine
+engine = create_engine('postgresql+psycopg2://vagrant:vagrant'
                        + '@localhost/itemcatalog.db', echo=True)
-#     !!! Change "False" to "True" to debug the SQL !!!
+
+# Connect to Database and create database session in Ubuntu Web Server
+# engine = create_engine('postgresql+psycopg2://ubuntu:ubuntu'
+#                        + '@localhost/itemcatalog.db', echo=False)
 
 # engine = create_engine('sqlite:///itemcatalog.db')
 Base.metadata.create_all(engine)
