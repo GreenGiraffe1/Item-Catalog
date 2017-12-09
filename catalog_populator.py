@@ -51,13 +51,13 @@ session.add(category2)
 session.commit()
 
 
-item3 = Item(user_id=1, name="GTX 1080", description="PUT SOMETHING HERE",
+item3 = Item(user_id=1, name="Nvidia GTX 1080", description="Nvidia GPU built on the Pascal architecture, has 2560 CUDA cores, and 8GB of GDDR5X Memory",
              category=category2)
 session.add(item3)
 session.commit()
 
 
-item4 = Item(user_id=1, name="RX 580 8GB", description="PUT SOMETHING HERE",
+item4 = Item(user_id=1, name="AMD RX 580 8GB", description="AMD GPU built on the Polaris architecture, has 2304 stream processors, and 8GB of GDDR5 Memory",
              category=category2)
 session.add(item4)
 session.commit()
@@ -68,14 +68,14 @@ session.add(category3)
 session.commit()
 
 
-item5 = Item(user_id=1, name="ASUS 23.8 inch ",
-             description="PUT SOMETHING HERE",
+item5 = Item(user_id=1, name=" ASUS VN248H-P",
+             description="24 inch 1080p IPS monitor with built in speakers, a VESA mounting point, and 2 HDMI inputs",
              category=category3)
 session.add(item5)
 session.commit()
 
 
-item6 = Item(user_id=1, name="HP OMEN 25", description="PUT SOMETHING HERE",
+item6 = Item(user_id=1, name="HP OMEN 25", description="24.5 inch 1080p TN monitor with a 144Hz refresh rate and HDMI & Displayport inputs",
              category=category3)
 session.add(item6)
 session.commit()
