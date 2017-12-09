@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="row create-row">
-        {% if 'username' not in session %}
-        {% else %}
-            {% include "create.html" %}
-        {% endif %}
-</div>
+
 <div class="row middle">
+    <div class="col-xs-12 create-row">
+            {% if 'username' not in session %}
+            {% else %}
+                {% include "create.html" %}
+            {% endif %}
+    </div>
     <div class="item-details col-xs-8">
         <h2>{{item.name}}</h2>
         <p class="item-description"><pre>{{item.description}}</pre></p>
