@@ -79,6 +79,13 @@ Mapper (ORM) to allow me to make full use of a SQL backed database inside this
 Python application. The [Bootstrap](https://getbootstrap.com) framework is
 used to organized the user interface.
 
+In deploying this project to Amazon Web Services (AWS) I made heavy reference
+use of this [tutorial](https://amunategui.github.io/idea-to-pitch/) written
+by Manuel Amunategui. Additionally, this
+[forum post](https://discussions.udacity.com/t/solved-configuring-linux-google-oauth-invalid-request/376259)
+by fellow Udacity student with username ```vivilearnstocode2_4i``` was key in getting Facebook and Google logins to work with this app once it was deployed
+to AWS.
+
 ## License:
 **Catalog Web App** is a public domain work, with license
 [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
