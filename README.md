@@ -61,7 +61,7 @@ running ```catalog_populator.py```.
 
 #### Create accounts with Facebook and Google, and create a new app ID with each provider:
 
-* For **Google**, you'll go to their
+* **Google:** Go to their
 [developer site](https://console.developers.google.com), login, and click on
 the carrot tab in the top left. It will open a menu where you'll click the
 plus "+" sign to create a new project. You'll give it a name, and then click
@@ -75,7 +75,8 @@ client ID, and client secret. Add the client ID to ```login.html```, and
 download the associated JSON file by clicking on the download icon to the
 right. Rename the downloaded file to ```client_secrets.json``` and place it in
 the main directory where you cloned this repository.
-* For **Facebook** you'll go to their
+
+* **Facebook:** Go to their
 [developer site](https://developers.facebook.com/), sign-in, and in the
 top-right corner, in the drop-down menu, select add a new App. You'll give it
 a name, and on the next page you'll click "+Add Product" and choose "Facebook
