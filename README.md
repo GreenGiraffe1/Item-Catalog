@@ -46,10 +46,8 @@ access the database). Create a new database named ```itemcatalog.db```. Next
 you'll need to modify the database connection string in the following three
 files: ```database_setup.py```, ```catalog_populator.py```,
 and ```catalog_main.py```. Please refer to
-[SQLAlchemy's documentation](https://docs.sqlalchemy.org/en/rel_1_1/
-dialects/postgresql.html#module-sqlalchemy.dialects.postgresql.psycopg2)
-for instruction on how to modify the connection string for your host
-environment.
+[SQLAlchemy's documentation](https://docs.sqlalchemy.org/en/rel_1_1/dialects/postgresql.html#module-sqlalchemy.dialects.postgresql.psycopg2) for instruction on how to modify the
+connection string for your host environment.
 
 ####  Initialize & Populate the database.
 From your server / VM shell terminal, where the cloned files are present,
@@ -114,10 +112,9 @@ used to organized the user interface.
 In deploying this project to Amazon Web Services (AWS) I made heavy reference
 use of this [tutorial](https://amunategui.github.io/idea-to-pitch/) written
 by Manuel Amunategui. Additionally, this
-[forum post](https://discussions.udacity.com/t/solved-configuring-linux-
-google-oauth-invalid-request/376259) by fellow Udacity student with
-username ```vivilearnstocode2_4i``` was key in getting Facebook and Google
-logins to work with this app once it was deployed to AWS.
+[forum post](https://discussions.udacity.com/t/solved-configuring-linux-google-oauth-invalid-request/376259) by fellow Udacity student with username ```vivilearnstocode2_4i``` was
+key in getting Facebook and Google logins to work with this app once it
+was deployed to AWS.
 
 ## License:
 **Catalog Web App** is a public domain work, with license
