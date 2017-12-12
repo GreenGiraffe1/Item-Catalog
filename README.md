@@ -18,7 +18,7 @@ making sure you have an active Internet connection and Python 2.7x installed
 on the system. For the VM, Oracle VirtualBox must be installed on the
 system. Clone all files from this GitHub repository to the same directory.
 
-##### Setup a virtual machine (option 1):
+#### Setup a virtual machine (option 1):
 In the local directory where you cloned all the files run ```vagrant up```.
 This will download and install the virtual machine(VM) to your computer
 according to the specifications in ```Vagrantfile```.  Once the VM is up
@@ -26,7 +26,7 @@ type ```vagrant ssh``` in the terminal to login to the VM. The cloned files
 in your local directory will be available inside the VM at directory
 location: ```/vagrant/```.
 
-##### Setup a Web server (option 2):
+#### Setup a Web server (option 2):
 There are many possible configurations, but these are outside the scope of
 this README. Please consult the documentation for your preferred Web hosting
 software and provider.
@@ -34,7 +34,7 @@ software and provider.
 This Web app has been tested to work with Apache server software in an
 Amazon Web Services (AWS) virtual instance, running Ubuntu Server.
 
-##### Setup the PostgreSQL Database
+#### Setup the PostgreSQL Database
 Unless already installed, you'll need to download and install the
 open-source database software for [PostgreSQL](https://www.postgresql.org/),
 [SQLAlchemy](https://www.sqlalchemy.org/), and
@@ -51,7 +51,7 @@ dialects/postgresql.html#module-sqlalchemy.dialects.postgresql.psycopg2)
 for instruction on how to modify the connection string for your host
 environment.
 
-#####  Initialize & Populate the database.
+####  Initialize & Populate the database.
 From your server / VM shell terminal, where the cloned files are present,
 run ```database_setup.py``` to create the database. At this point you will
 need to give your database's user permission to modify the tables that were
@@ -61,7 +61,7 @@ Finally, populate the tables with test data by
 running ```catalog_populator.py```.
 
 
-##### Create accounts with Facebook and Google, and create a new app ID with each provider:
+#### Create accounts with Facebook and Google, and create a new app ID with each provider:
 
 * For **Google**, you'll go to their
 [developer site](https://console.developers.google.com), login, and click on
