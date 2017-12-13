@@ -72,6 +72,7 @@ body {
 pre {
     background-color: lightgray;
     border: none;
+    white-space: pre-wrap;
 }
 .options {
     margin-bottom: 5px;
@@ -79,7 +80,7 @@ pre {
 
 /*Delete Item page*/
 .item-to-delete {
-    text-align: center;
+    text-align: pre-wrap;
 }
 
 /*Create Item Button*/
