@@ -1,10 +1,10 @@
-# Catalog Web App
+# Item Catalog
 
-**Catalog Web App** is a project that displays a catalog of items, and
+**Item Calaog** is a project that displays a catalog of items, and
 allows users to interact with them. Component items are organized into one
 of several categories. The items can be displayed as one long comprehensive
 list, or grouped into sub-lists by category. An item's detailed description
-can be viewed by clicking on an item. **Catalog Web App** supports user
+can be viewed by clicking on an item. **Item Catlog** supports user
 registration, and logging via Facebook Login or Google Login OAuth2.0
 verification. User's who are signed-in are able to create new items, and
 edit or delete items they've created. Permissions are in place to prevent
@@ -113,10 +113,11 @@ used to organized the user interface.
 In deploying this project to Amazon Web Services (AWS) I made heavy reference
 use of this [tutorial](https://amunategui.github.io/idea-to-pitch/) written
 by Manuel Amunategui. Additionally, this
-[forum post](https://discussions.udacity.com/t/solved-configuring-linux-google-oauth-invalid-request/376259) by fellow Udacity student with username ```vivilearnstocode2_4i``` was
+[forum post](https://discussions.udacity.com/t/solved-configuring-linux-google-oauth-invalid-request/376259)
+by fellow Udacity student with username ```vivilearnstocode2_4i``` was
 key in getting Facebook and Google logins to work with this app once it
 was deployed to AWS.
 
 ## License:
-**Catalog Web App** is a public domain work, with license
-[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+**Item Catalog** is an open source project created under the
+[MIT License](https://github.com/GreenGiraffe1/Item-Catalog/blob/master/LICENSE).
