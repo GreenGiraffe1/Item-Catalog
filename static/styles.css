@@ -5,9 +5,14 @@ html {
 body {
     background-color: #F4F7F8;
 }
+/* Stick Footer */
+html, body {
+    height: 100%;
+}
 .block-stuff {
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: calc(100% - 100px - 20px -75px - 20px);
 }
 .flash {
     color: red;
@@ -26,6 +31,7 @@ body {
 .header {
     background-color: #2e3b4c;
     padding-bottom: 3vh;
+    min-height: 100px;
 }
 .log-in-out {
     float: right;
@@ -116,6 +122,7 @@ button {
     background-color: #2e3b4c;
     color: white;
     padding-top: 3vh;
+    min-height: 75px;
 }
 
 /*Media Queries*/
