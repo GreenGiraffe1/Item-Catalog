@@ -46,8 +46,10 @@
         </div>
         <div class="container block-stuff">
             <div class="row middle">
-                <h2>Please Login with Facebook or Google+</h2>
-                <div id="signinButton">
+                <!-- This section has been altered on the live server - because the Google Sign-In was broken -->
+                <h2>Please Login with Facebook</h2>
+                <!-- <h2>Please Login with Facebook or Google+</h2> -->
+                <!-- <div id="signinButton">
                     <span class="g-signin"
                         data-scope="openid email"
                         data-clientid="539176150684-4urstt8029s6inbv756g1pek2gc57krc.apps.googleusercontent.com"
@@ -57,7 +59,7 @@
                         data-callback="signInCallback"
                         data-approvalprompt="force">
                     </span>
-                </div>
+                </div> -->
                 <fb:login-button scope="public_profile,email" onlogin="sendTokenToServer();">
                     <a href='javascript:sendTokenToServer()'>Sign in with Facebook</a>
                 </fb:login-button>
