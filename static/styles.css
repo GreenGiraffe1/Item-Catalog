@@ -12,7 +12,7 @@ html, body {
 .block-stuff {
     margin-top: 20px;
     margin-bottom: 20px;
-    min-height: calc(100% - 100px - 20px -75px - 20px);
+    min-height: calc(100% - 100px - 20px - 75px - 20px);
 }
 .flash {
     color: red;
@@ -30,7 +30,7 @@ html, body {
 /*Header*/
 .header {
     background-color: #2e3b4c;
-    padding-bottom: 3vh;
+    padding-bottom: 2vh;
     min-height: 100px;
 }
 .log-in-out {
@@ -78,7 +78,7 @@ html, body {
 pre {
     background-color: lightgray;
     border: none;
-    white-space: pre-wrap;
+    /* white-space: pre-wrap; */
 }
 .options {
     margin-bottom: 5px;
@@ -86,7 +86,8 @@ pre {
 
 /*Delete Item page*/
 .item-to-delete {
-    text-align: pre-wrap;
+    /* text-align: pre-wrap; */
+    text-align: center;
 }
 
 /*Create Item Button*/
