@@ -1,10 +1,10 @@
-# Item Catalog
+# Item-Catalog
 
-**Item Calaog** is a project that displays a catalog of items, and
+**Item-Calaog** is a project that displays a catalog of items, and
 allows users to interact with them. Component items are organized into one
 of several categories. The items can be displayed as one long comprehensive
 list, or grouped into sub-lists by category. An item's detailed description
-can be viewed by clicking on an item. **Item Catlog** supports user
+can be viewed by clicking on an item. **Item-Catlog** supports user
 registration, and logging via Facebook Login or Google Login OAuth2.0
 verification. User's who are signed-in are able to create new items, and
 edit or delete items they've created. Permissions are in place to prevent
@@ -119,5 +119,5 @@ key in getting Facebook and Google logins to work with this app once it
 was deployed to AWS.
 
 ## License:
-**Item Catalog** is an open source project created under the
+**Item-Catalog** is an open source project created under the
 [MIT License](https://github.com/GreenGiraffe1/Item-Catalog/blob/master/LICENSE).
